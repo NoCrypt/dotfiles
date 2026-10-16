@@ -1,0 +1,39 @@
+# swaylock-effects. Read automatically from ~/.config/swaylock/config.
+# Lock = blurred screenshot of the desktop with a GitHub Dark clock ring.
+
+screenshots
+effect-blur=15x5
+
+# clock inside the ring, ring always shown
+indicator
+clock
+timestr=%H:%M
+datestr=%A %d %B
+font=JetBrainsMono Nerd Font
+font-size=42
+indicator-radius=130
+indicator-thickness=8
+
+# GitHub Dark
+color=0d1117
+inside-color=0d1117e6
+inside-ver-color=0d1117e6
+inside-wrong-color=161b22e6
+inside-clear-color=0d1117e6
+inside-caps-lock-color=161b22e6
+ring-color=8b949e
+ring-ver-color=58a6ff
+ring-wrong-color=f85149
+ring-clear-color=3fb950
+ring-caps-lock-color=d29922
+line-color=00000000
+separator-color=00000000
+key-hl-color=58a6ff
+bs-hl-color=f85149
+caps-lock-key-hl-color=d29922
+caps-lock-bs-hl-color=f85149
+text-color=c9d1d9
+text-ver-color=58a6ff
+text-wrong-color=f85149
+text-clear-color=3fb950
+text-caps-lock-color=d29922

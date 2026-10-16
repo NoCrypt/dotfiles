@@ -50,7 +50,6 @@ foot
 fuzzel
 mako
 swaybg
-swaylock
 swayidle
 wlr-randr
 jq
@@ -78,6 +77,7 @@ ninja
 
 # PKG_AUR
 mangobar-git
+swaylock-effects
 
 # Added automatically depending on hardware:
 #   intel-ucode | amd-ucode              (CPU vendor)

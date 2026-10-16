@@ -2,6 +2,7 @@
 # Power-aware idle management for mango.
 #   AC:      screen off after 20 min (no lock, no suspend)
 #   Battery: screen off after 5 min, lock after 40 min, suspend after 1 h
+#   Locked:  screen off after 30 s (battery keeps the 1 h suspend)
 # Fullscreen windows (and apps that hold an idle inhibitor) stay unlocked.
 # Caffeine (scripts/caffeine.sh) stops idle management entirely while its flag
 # exists. The AC adapter and the caffeine flag are polled, so both take effect
@@ -26,10 +27,13 @@ on_ac() {
 	return 1
 }
 
-# what the machine should be doing right now; caffeine wins over everything
+# what the machine should be doing right now; caffeine wins, then a locked
+# session (swaylock running), then the normal AC/battery rules
 state() {
 	if [ -e "$flag" ]; then
 		echo caffeine
+	elif pgrep -x swaylock >/dev/null 2>&1; then
+		on_ac && echo locked-ac || echo locked-bat
 	elif on_ac; then
 		echo ac
 	else
@@ -41,6 +45,15 @@ apply() {  # $1 = state
 	pkill -x swayidle 2>/dev/null || true
 	case "$1" in
 	caffeine) ;;   # leave no idle manager running at all
+	locked-ac)
+		swayidle -w \
+			timeout 30 "$0 screen --off" resume "$0 screen --on" &
+		;;
+	locked-bat)
+		swayidle -w \
+			timeout 30 "$0 screen --off" resume "$0 screen --on" \
+			timeout 3600 'systemctl suspend' &
+		;;
 	ac)
 		swayidle -w \
 			timeout 1200 "$0 screen --off" resume "$0 screen --on" &
