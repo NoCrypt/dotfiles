@@ -8,6 +8,10 @@ Managed with chezmoi source naming.
   `sudo cp -r usr/share/sddm/themes/orbital/* /usr/share/sddm/themes/orbital/`.
   Recorded here for reference/restore, not applied by chezmoi (see `.chezmoiignore`).
 
+## Preview
+
+![mango + mangobar + kitty/fastfetch on the laptop panel](screenshot.png)
+
 ## Contents
 
 | Path | What |
