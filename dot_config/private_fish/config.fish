@@ -5,6 +5,9 @@ end
 set fish_greeting
 
 bind ctrl-h backward-kill-word
+bind ctrl-left backward-word
+bind ctrl-right forward-word
+bind ctrl-backspace backward-kill-word
 
 alias cm="sync && sudo sysctl vm.drop_caches=3"
 alias gcp="git cherry-pick"
