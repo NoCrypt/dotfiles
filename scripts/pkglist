@@ -1,0 +1,86 @@
+# PKG_BASE
+base-devel
+git
+sudo
+man-db
+man-pages
+pciutils
+linux-firmware
+sof-firmware
+
+# PKG_BOOT
+grub
+efibootmgr
+os-prober
+ntfs-3g
+dosfstools
+
+# PKG_NET
+networkmanager
+wpa_supplicant
+wireless-regdb
+iw
+bluez
+bluez-utils
+
+# PKG_AUDIO
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-audio
+wireplumber
+rtkit
+alsa-utils
+
+# PKG_POWER
+power-profiles-daemon
+upower
+brightnessctl
+ddcutil
+
+# PKG_DESKTOP
+mangowm
+xorg-xwayland
+xdg-desktop-portal
+xdg-desktop-portal-wlr
+xdg-desktop-portal-gtk
+polkit
+polkit-gnome
+foot
+fuzzel
+mako
+swaybg
+wl-clipboard
+grim
+slurp
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-emoji
+
+# PKG_MANGOBAR_DEPS
+cjson
+fcft
+tllist
+pixman
+wayland
+wayland-protocols
+cairo
+pango
+libpulse
+gdk-pixbuf2
+systemd-libs
+meson
+ninja
+
+# PKG_AUR
+mangobar-git
+
+# Added automatically depending on hardware:
+#   intel-ucode | amd-ucode              (CPU vendor)
+#   vulkan-intel intel-media-driver      (Intel iGPU)
+#   vulkan-radeon                        (AMD GPU)
+#   nvidia-open nvidia-utils libva-nvidia-driver egl-wayland   (NVIDIA, Turing+)
+#   nvidia-open-dkms + <kernel>-headers  (NVIDIA, non-stock kernel)
+#   nvidia-prime                         (NVIDIA + another GPU = hybrid laptop)
+#   asusctl                              (ASUS laptops: [extra], or OpenGamingCollective source build with ASUSCTL_SOURCE=ogc)
+#   sddm                                 (DISPLAY_MANAGER=sddm)

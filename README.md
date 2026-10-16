@@ -7,6 +7,7 @@ Managed with chezmoi source naming.
   `sudo cp etc/sddm.conf.d/*.conf /etc/sddm.conf.d/` and
   `sudo cp -r usr/share/sddm/themes/orbital/* /usr/share/sddm/themes/orbital/`.
   Recorded here for reference/restore, not applied by chezmoi (see `.chezmoiignore`).
+- `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer) and `pkglist` (the packages it installs).
 
 ## Preview
 
@@ -34,6 +35,8 @@ Managed with chezmoi source naming.
 | `etc/pacman.conf` | repos incl. chaotic-aur |
 | `usr/share/sddm/scripts/Xsetup` | reverse-PRIME: power on the external monitor; dark the laptop panel when docked |
 | `usr/share/sddm/themes/orbital/` | orbital theme + image background (`Main.qml` edited to add it) |
+| `scripts/post-install.sh` | lean Arch installer (mango + mangobar, GRUB, NVIDIA/ASUS, PipeWire, NetworkManager, SDDM); run as root on a fresh install |
+| `scripts/pkglist` | packages that installer pulls in — `post-install.sh --list`; regenerate with `bash scripts/post-install.sh --list > scripts/pkglist` |
 
 Wallpapers and images are included. Excluded: credentials (`~/.config/gh`,
 `~/.ssh`, the OpenCode credential store) and caches.
