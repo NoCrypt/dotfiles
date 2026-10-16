@@ -50,6 +50,10 @@ foot
 fuzzel
 mako
 swaybg
+swaylock
+swayidle
+wlr-randr
+jq
 wl-clipboard
 grim
 slurp

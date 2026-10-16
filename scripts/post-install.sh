@@ -28,7 +28,7 @@ PKG_AUDIO=(pipewire pipewire-alsa pipewire-pulse pipewire-audio wireplumber rtki
 PKG_POWER=(power-profiles-daemon upower brightnessctl ddcutil)
 PKG_DESKTOP=(mangowm xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr
              xdg-desktop-portal-gtk polkit polkit-gnome foot fuzzel mako swaybg
-             wl-clipboard grim slurp ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji)
+             swaylock swayidle wlr-randr jq wl-clipboard grim slurp ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji)
 # mangobar-git's PKGBUILD lists fewer deps than upstream meson.build requires,
 # so everything meson.build asks for is installed up front.
 PKG_MANGOBAR_DEPS=(cjson fcft tllist pixman wayland wayland-protocols cairo pango

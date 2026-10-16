@@ -135,6 +135,12 @@
     color: #58a6ff;
 }
 
+/* Caffeine toggle: full cup = preventing idle, slashed cup = off */
+#custom-caffeine {
+    background-color: #58a6ff;   /* same as #volume */
+    color: #0d1117;
+}
+
 #custom-text {
     background-color: #0d1117;
     color: #8b949e;

@@ -29,6 +29,7 @@
         //"pulseaudio",
         "custom/brightness",
         "battery",
+        "custom/caffeine",
         "custom/power"
     ],
 
@@ -88,8 +89,7 @@
         "icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "icon-charging": "󰂄",
         "icon-full": "󰁹",
-        "icon-ac": "",
-        "hide-on-ac": true
+        "icon-ac": ""
     },
     "clock#date": {
         "format": "{:L%A %d %b}"
@@ -110,6 +110,14 @@
     "custom/applist": {
 	"format": "󰀻",
 	"on-click": "fuzzel"
+    },
+
+    "custom/caffeine": {
+        "format": "{}",
+        "exec": "/home/ncpt/.config/mango/scripts/caffeine.sh show",
+        "interval": 30,
+        "signal": 9,          // caffeine.sh sends SIGRTMIN+9 after a toggle
+        "on-click": "/home/ncpt/.config/mango/scripts/caffeine.sh toggle"
     },
 
     // brightness of the screen the knob is controlling (panel or external)
