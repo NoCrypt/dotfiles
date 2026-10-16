@@ -1,0 +1,30 @@
+#!/bin/sh
+# Xsetup - run as root before the login dialog appears.
+
+# The external monitor (DP-1) is wired to the NVIDIA dGPU, but the greeter's
+# X server runs on the AMD iGPU (modesetting, primary). Reverse-PRIME the
+# NVIDIA outputs onto the AMD provider so the external monitor powers on.
+providers=$(xrandr --listproviders 2>/dev/null)
+src=$(printf '%s\n' "$providers" | sed -n 's/.*name:\(modesetting\).*/\1/p' | head -n1)
+snk=$(printf '%s\n' "$providers" | sed -n 's/.*name:\(NVIDIA[^ ]*\).*/\1/p' | head -n1)
+[ -n "$src" ] && [ -n "$snk" ] && \
+    xrandr --setprovideroutputsource "$snk" "$src" 2>/dev/null
+
+# First connected non-panel output = the external monitor (empty if none).
+ext=""
+for o in $(xrandr --query 2>/dev/null | awk '/ connected/{print $1}'); do
+    [ "$o" = "eDP-1" ] && continue
+    ext="$o"; break
+done
+
+if [ -n "$ext" ] && xrandr --output "$ext" --auto 2>/dev/null; then
+    # External present: dark the laptop panel, external becomes the only screen.
+    xrandr --output eDP-1 --off 2>/dev/null
+    xrandr --output "$ext" --pos 0x0 --primary 2>/dev/null
+else
+    # No external (or it failed to light): use the laptop panel.
+    xrandr --output eDP-1 --auto --pos 0x0 --primary 2>/dev/null
+fi
+
+# Keep the login screen from blanking / powering the monitor off.
+xset s off -dpms 2>/dev/null || true

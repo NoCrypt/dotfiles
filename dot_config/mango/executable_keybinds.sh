@@ -4,11 +4,13 @@
 conf="${XDG_CONFIG_HOME:-$HOME/.config}/mango/config.conf"
 
 list() {
-	awk -F= '
+	awk '
 		/^[ \t]*#/ { next }
 		/^[ \t]*(bind|bindc|mousebind|axisbind|gesturebind)[ \t]*=/ {
-			kind = $1; gsub(/[ \t]/, "", kind)
-			n = split($2, a, ",")
+			# split on the first "=" only; the command after it may contain "="
+			eq = index($0, "=")
+			kind = substr($0, 1, eq - 1); gsub(/[ \t]/, "", kind)
+			n = split(substr($0, eq + 1), a, ",")
 			desc = a[3]
 			for (i = 4; i <= n; i++) desc = desc "," a[i]
 			sub(/,$/, "", desc)

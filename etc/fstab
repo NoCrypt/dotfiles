@@ -1,0 +1,19 @@
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p6 LABEL=arch
+UUID=2fb37867-7a46-48bf-b0d8-4fffe67b6b92	/         	btrfs     	rw,noatime,compress=zstd:3,discard=async,subvol=/@	0 0
+
+# /dev/nvme0n1p6 LABEL=arch
+UUID=2fb37867-7a46-48bf-b0d8-4fffe67b6b92	/home     	btrfs     	rw,noatime,compress=zstd:3,discard=async,subvol=/@home	0 0
+
+# /dev/nvme0n1p6 LABEL=arch
+UUID=2fb37867-7a46-48bf-b0d8-4fffe67b6b92	/var      	btrfs     	rw,noatime,compress=zstd:3,discard=async,subvol=/@var	0 0
+
+# /dev/nvme0n1p5
+UUID=bf769630-18b5-4915-b89e-7dce253b87d4	/boot     	ext4      	rw,relatime	0 2
+
+# /dev/nvme0n1p1 LABEL=SYSTEM
+UUID=D21F-32AF      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+

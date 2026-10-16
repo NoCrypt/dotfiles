@@ -95,14 +95,14 @@
         "icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
         "icon-charging": "󰂄",
         "icon-full": "󰁹",
-        "icon-ac": ""
-        // "hide-on-ac": true
+        "icon-ac": "",
+        "hide-on-ac": true
     },
     "clock#date": {
-        "format": " {:L%A %d %b}"
+        "format": "{:L%A %d %b}"
     },
     "clock#time": {
-        "format": " {:L%H:%M}"
+        "format": "{:L%H:%M}"
     },
     "tray": {
         "icon-size": 25,
