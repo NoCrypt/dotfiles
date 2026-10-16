@@ -1,22 +1,33 @@
 #!/bin/sh
 # Reference of all mango keybinds. Bound to Super+/ in config.conf.
 # Usage: keybinds.sh [--list]   (--list prints plain text instead of opening fuzzel)
+# The comment line directly above a bind is shown as its description; a bind
+# without one falls back to its raw action name.
 conf="${XDG_CONFIG_HOME:-$HOME/.config}/mango/config.conf"
 
 list() {
 	awk '
-		/^[ \t]*#/ { next }
+		/^[ \t]*#/ {
+			desc = $0
+			sub(/^[ \t]*#[ \t]*/, "", desc)
+			next
+		}
+		/^[ \t]*$/ { desc = ""; next }
 		/^[ \t]*(bind|bindc|mousebind|axisbind|gesturebind)[ \t]*=/ {
 			# split on the first "=" only; the command after it may contain "="
 			eq = index($0, "=")
 			kind = substr($0, 1, eq - 1); gsub(/[ \t]/, "", kind)
 			n = split(substr($0, eq + 1), a, ",")
-			desc = a[3]
-			for (i = 4; i <= n; i++) desc = desc "," a[i]
-			sub(/,$/, "", desc)
+			if (desc == "") {
+				desc = a[3]
+				for (i = 4; i <= n; i++) desc = desc "," a[i]
+				sub(/,$/, "", desc)
+			}
 			if (desc == "") printf "%-11s %s\n", kind, a[1] "+" a[2]
-			else printf "%-11s %-24s %s\n", kind, a[1] "+" a[2], desc
+			else printf "%-11s %-26s %s\n", kind, a[1] "+" a[2], desc
+			desc = ""
 		}
+		{ desc = "" }
 	' "$conf"
 }
 

@@ -17,9 +17,9 @@ Managed with chezmoi source naming.
 | Path | What |
 | --- | --- |
 | `dot_config/kitty/` | kitty terminal (JetBrainsMono Nerd Font, GitHub Dark colors) |
-| `dot_config/mango/` | mangowm (dwindle, Super-based binds, blur, borders); `keybinds.sh` (Super+/ cheatsheet); `mangobar-preview.sh`; `wlogout/` power menu |
+| `dot_config/mango/` | mangowm (dwindle, Super-based binds, blur, borders); `keybinds.sh` (Super+/ cheatsheet); `mangobar-preview.sh`; `scripts/knob.sh` (volume knob: plain = volume, Ctrl = brightness, Ctrl+press = which screen, Alt+press = audio output); `wlogout/` power menu |
 | `dot_config/mango/wallpaper/` | wallpapers (`miku-dark.png`, `miku.jpg`) |
-| `dot_config/mangobar/` | status bar — athos-gruv layout, GitHub Dark, rounder/spaced, fuzzel app-list, wlogout power menu |
+| `dot_config/mangobar/` | status bar — athos-gruv layout, GitHub Dark, rounder/spaced, fuzzel app-list, wlogout power menu, `custom/brightness` (scroll = brightness, click = switch screen) |
 | `dot_config/fuzzel/` | launcher (GitHub Dark) |
 | `dot_config/fontconfig/` | monospace → JetBrainsMono Nerd Font |
 | `dot_config/fastfetch/` | fastfetch config + logo image (`miku.png`) |

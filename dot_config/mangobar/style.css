@@ -93,9 +93,9 @@
     background-color: #0d1117;
     color: #8b949e;
 }
-#brightness {
-    background-color: #bc8cff;   /* done/purple */
-    color: #0d1117;
+#custom-brightness {
+    background-color: #0d1117;   /* same as #mem */
+    color: #8b949e;
 }
 #volume {
     background-color: #58a6ff;

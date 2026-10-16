@@ -27,7 +27,7 @@
         "cpu",
         "memory",
         //"pulseaudio",
-        //"backlight",
+        "custom/brightness",
         "battery",
         "custom/power"
     ],
@@ -74,13 +74,6 @@
         "format": " {}%",
 	"on-click": "foot -e gotop"
     },
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟"],
-        "on-scroll-up": "bash ~/.config/mango/scripts/brightness.sh bup",
-        "on-scroll-down": "bash ~/.config/mango/scripts/brightness.sh bdown",
-        "on-click": "brightnessctl set 1%"
-    },
     "pulseaudio": {
         "format": "{icon} {volume}% {bt}",
         "format-muted": "󰖁 {volume}% {bt}",
@@ -117,5 +110,16 @@
     "custom/applist": {
 	"format": "󰀻",
 	"on-click": "fuzzel"
+    },
+
+    // brightness of the screen the knob is controlling (panel or external)
+    "custom/brightness": {
+        "format": "{}",
+        "exec": "/home/ncpt/.config/mango/scripts/knob.sh show",
+        "interval": 30,
+        "signal": 8,          // knob.sh sends SIGRTMIN+8 after every change
+        "on-click": "/home/ncpt/.config/mango/scripts/knob.sh screen",
+        "on-scroll-up": "/home/ncpt/.config/mango/scripts/knob.sh up",
+        "on-scroll-down": "/home/ncpt/.config/mango/scripts/knob.sh down"
     }
 }
