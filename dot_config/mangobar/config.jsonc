@@ -1,42 +1,121 @@
-// mangobar config (JSONC). Module names/keys follow upstream's example config.
+// mangobar config (JSONC).
 {
     "layer": "top",
     "height": 30,
-    "modules-left": ["workspaces", "layout", "window"],
-    "modules-center": [],
-    "modules-right": ["tray", "network", "cpu", "memory", "pulseaudio", "backlight", "battery", "clock#date", "clock#time"],
+    "buffer-scale": 1,
+    // "scroll-interval": 100,
+    // "smooth-scrolling-threshold": 5.0,
 
-    "workspaces": { "hide-empty": true, "on-click": "activate", "on-click-right": "toggle" },
-    "layout":     { "format": "{}" },
-    "window":     { "format": "{}" },
-    "network": {
-        "format": "{icon} {ifname}",
-        "format-wifi": "{signal} {ssid}",
-        "format-disconnected": "{icon}",
-        "icon-wifi": "󰖩", "icon-ethernet": "󰈀", "icon-disconnected": "󰖪",
-        "signal-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"]
+    "modules-left": [
+        "custom/applist",
+	"workspaces",
+        "layout",
+        "window"
+    ],
+    "modules-center": [
+	"clock#date",
+	"clock#time"
+    ],
+
+    "modules-right": [
+        "hideclients",
+        "tray",
+        "network",
+	"pulseaudio",
+        // "keymode",
+        // "keyboardlayout",
+        "cpu",
+        "memory",
+        //"pulseaudio",
+        //"backlight",
+        "battery",
+        "custom/power"
+    ],
+
+    "workspaces": {
+        "hide-empty": true,
+//	"persistent-only": true,
+//	"persistent-workspaces": {
+//	    "*": [1, 2, 3, 4]
+//	},
+        // "pinned": [1, 2],
+        // "tag-names": ["1", "2", "3", "编", "网"],
+        "overview-label": "OVERVIEW",
+        "on-click": "activate",
+        "on-click-right": "toggle"
     },
-    "cpu":    { "format": " {load}%" },
-    "memory": { "format": " {}%" },
-    "pulseaudio": {
-        "format": "{icon} {volume}% {bt}",
-        "format-muted": "󰝟 {volume}% {bt}",
-        "icons": ["󰝟", "󰕿", "󰕾"],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 2%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-"
+    "layout": {
+        "format": "{}"
+    },
+    "window": {
+        "format": "{}",
+        "on-click": "grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H_%M_%S).png",
+        "on-click-right": "python /home/wrq/tool/ocr.py",
+	"max-length": 500
+    },
+
+    "network": {
+        //"format": "󰈀 {ifname}",
+        //"format-alt": "↓{down} ↑{up}"
+	"format": " ",
+	"format-wifi": " ",
+	"format-ethernet": "󰈀 ",
+	"format-disconnected": " ",
+	"on-click": "networkmanager_dmenu"
+    },
+    "hideclients": {
+        "format": " {}"
+    },
+    "cpu": {
+        "format": " {load}%",
+	"on-click": "foot -e gotop"
+    },
+    "memory": {
+        "format": " {}%",
+	"on-click": "foot -e gotop"
     },
     "backlight": {
         "format": "{icon} {percent}%",
         "icons": ["󰃚", "󰃛", "󰃜", "󰃝", "󰃞", "󰃟"],
-        "on-scroll-up": "brightnessctl set 5%+",
-        "on-scroll-down": "brightnessctl set 5%-"
+        "on-scroll-up": "bash ~/.config/mango/scripts/brightness.sh bup",
+        "on-scroll-down": "bash ~/.config/mango/scripts/brightness.sh bdown",
+        "on-click": "brightnessctl set 1%"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}% {bt}",
+        "format-muted": "󰖁 {volume}% {bt}",
+        "icons": ["󰕿", "󰖀", "󰕾"],
+        // "icon-bluetooth": "󰂯",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
     },
     "battery": {
         "format": "{icon} {percent}% {ac}",
-        "icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+        "icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "icon-charging": "󰂄",
+        "icon-full": "󰁹",
+        "icon-ac": ""
+        // "hide-on-ac": true
     },
-    "clock#date": { "format": " {:L%b%d·%A}" },
-    "clock#time": { "format": " {:L%H:%M}" },
-    "tray": { "icon-size": 20, "spacing": 10 }
+    "clock#date": {
+        "format": " {:L%A %d %b}"
+    },
+    "clock#time": {
+        "format": " {:L%H:%M}"
+    },
+    "tray": {
+        "icon-size": 25,
+        "spacing": 10
+    },
+
+    "custom/power": {
+        "format": "",
+        "on-click": "GDK_BACKEND=wayland wlogout -C /home/ncpt/.config/mango/wlogout/style.css -l /home/ncpt/.config/mango/wlogout/layout -b 6 --protocol layer-shell"
+    },
+
+    "custom/applist": {
+	"format": "󰀻",
+	"on-click": "fuzzel"
+    }
 }

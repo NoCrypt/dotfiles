@@ -12,8 +12,8 @@ Managed with chezmoi source naming.
 | Path | What |
 | --- | --- |
 | `dot_config/kitty/` | kitty terminal (GitHub Dark colors, padding, right-click copy) |
-| `dot_config/mango/` | mangowm (dwindle default, Super-based binds, blur, borders) + `keybinds.sh` (Super+/ cheatsheet) |
-| `dot_config/mangobar/` | status bar (GitHub Dark style) |
+| `dot_config/mango/` | mangowm (dwindle default, Super-based binds, blur, borders); `keybinds.sh` (Super+/ cheatsheet); `mangobar-preview.sh`; `wlogout/` power menu |
+| `dot_config/mangobar/` | status bar — athos-gruv layout, GitHub Dark, rounder/spaced, fuzzel app-list, wlogout power menu |
 | `dot_config/fuzzel/` | launcher (GitHub Dark) |
 | `dot_config/private_fish/` | fish shell (ctrl-arrow / ctrl-backspace word binds) |
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, openrouter-credit plugin |
@@ -22,3 +22,5 @@ Managed with chezmoi source naming.
 | `etc/pacman.conf` | repos incl. chaotic-aur |
 
 Not included: wallpapers and images (size/licensing), and anything with credentials (`~/.config/gh`, `~/.ssh`, the OpenCode credential store).
+
+Third-party bits vendored for convenience: the `mangobar` bar layout (athos-megas), the `wlogout` power menu + icons (DreamMaoMao), and the SDDM `orbital` theme (Rizmi/ryoku).

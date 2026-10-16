@@ -1,0 +1,62 @@
+* {
+    background-image: none;
+    box-shadow: none;
+}
+
+window {
+    border: none;
+    font-family: HYLeMiaoTiJ,CaskaydiaCove Nerd Font, monospace;
+    font-size: 12pt;
+    font-weight: bold;
+    color: #c9d1d9;
+    background-color: rgba(13, 17, 23, 0.78);
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 40px;
+    background-size: 60%;
+    border: none;
+    color: #c9d1d9;
+    text-shadow: none;
+    border-radius: 20px 20px 20px 20px;
+    background-color: rgba(88, 166, 255, 0);
+    margin-top: 120px;
+    margin-bottom: 120px;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+button:hover {
+    background-color: rgba(88, 166, 255, 0.3);
+    background-size: 80%;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.5s ease-in;
+}
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+
+#logout:hover {
+    background-image: image(url("./icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("./icons/sleep.png"));
+} 
+
+#shutdown {
+    background-image: image(url("./icons/power.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate.png"));
+}

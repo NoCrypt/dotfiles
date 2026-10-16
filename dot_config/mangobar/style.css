@@ -1,15 +1,165 @@
-/* mangobar style — GitHub Dark (Primer). Reference: style.css.example in github.com/mangowm/mangobar */
+/* =========================================================
+ * mangobar style — athos-gruv layout, recolored to GitHub Dark
+ *
+ * Modules: bar / tags / layout / title / overview /
+ *          clock / cpu / mem / brightness / volume /
+ *          network / keymode / keyboardlayout / tray / custom-<name>
+ * Tag states: tags.active / tags.occupied / tags.urgent / tags.empty
+ * Properties: color / background / padding / margin / border-radius /
+ *             min-width / font-family / font-size / font-weight
+ * ========================================================= */
+
+/* ==================== Font ==================== */
 * {
     font-family: "JetBrainsMono Nerd Font";
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
-    color: #c9d1d9;
-    background-color: #161b22;
-    padding: 0px 10px;
-    margin: 5px 1px;
-    border-radius: 100px;
 }
-#bar { background: none; margin: 5px 10px; }
-#tags { padding: 0px 13px; margin: 0px 2px; }
-#tags.active { background-color: #1f6feb; color: #ffffff; }
-#tags.occupied { background-color: #21262d; color: #8b949e; }
+
+* {
+    color: #c9d1d9;              /* GitHub fg.default   */
+    background-color: #21262d;   /* GitHub canvas.overlay */
+    padding: 0px 10px;
+    margin: 0px 4px;             /* space between modules */
+    border-radius: 10px;         /* rounder (was 0px)   */
+}
+
+#bar {
+    background: none;
+    margin: 5px 10px;
+}
+#bar.sel {
+    background: none;
+}
+
+#tags {
+    padding: 0px 13px;
+}
+
+#tags.active {
+    background-color: #58a6ff;   /* accent blue */
+    color: #0d1117;
+}
+#tags.occupied {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+#tags.urgent {
+    background-color: #f85149;   /* danger */
+    color: #0d1117;
+}
+#tags.empty {
+    background-color: #010409;
+    color: #c9d1d9;
+}
+
+/* Overview mode */
+#overview {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+
+/* Layout symbol */
+#layout {
+    padding: 0px 12px;
+    background-color: #0d1117;
+    color: #8b949e;
+    min-width: 34px;
+    margin: 5px 5px;
+}
+
+/* Window title */
+#title {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+
+/* Right-side system modules */
+#clock {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+/* Date module (clock#date), separate from time */
+#clock.date {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+#cpu {
+    padding: 0px 15px;
+    background-color: #0d1117;
+    color: #8b949e;
+}
+#mem {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+#brightness {
+    background-color: #bc8cff;   /* done/purple */
+    color: #0d1117;
+}
+#volume {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+#network {
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+#network.disconnected {
+    background-color: #f85149;
+    color: #0d1117;
+}
+#battery {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+#keymode {
+    background-color: #39c5cf;   /* cyan */
+    color: #0d1117;
+}
+#keyboardlayout {
+    background-color: #db61a2;   /* pink */
+    color: #0d1117;
+}
+
+/* Custom modules use #custom-<name> (e.g. custom/power -> #custom-power) */
+#custom-power {
+    margin: 0px 5px;
+    background-color: #58a6ff;
+    color: #0d1117;
+}
+
+#custom-applist {
+    margin: 0px 5px;
+    background-color: #0d1117;
+    color: #58a6ff;
+}
+
+#custom-text {
+    background-color: #0d1117;
+    color: #8b949e;
+}
+
+#tray {
+    background-color: #161b22;   /* canvas.subtle */
+    padding: 0px 15px;
+}
+
+menu {
+    background-color: #161b22;
+    border-color: #30363d;
+    border-radius: 12px;
+    font-size: 14px;
+}
+menuitem {
+    color: #c9d1d9;
+}
+menuitem:hover {
+    color: #0d1117;
+    background-color: #3fb950;   /* success green */
+}
+
+#hideclients {
+    color: #0d1117;
+    background-color: #58a6ff;
+}
