@@ -3,9 +3,10 @@
 Managed with chezmoi source naming.
 
 - `dot_config/` — maps to `~/.config/` (`dot_` = leading dot). `private_` = private file mode, `executable_` = executable bit.
-- `etc/`, `usr/` — system files that live outside `$HOME`; copy them with `sudo`, e.g.
-  `sudo cp etc/sddm.conf.d/*.conf /etc/sddm.conf.d/` and
-  `sudo cp -r usr/share/sddm/themes/orbital/* /usr/share/sddm/themes/orbital/`.
+- `etc/`, `usr/`, `boot/` — system files that live outside `$HOME`; copy them with `sudo`, e.g.
+  `sudo cp etc/sddm.conf.d/*.conf /etc/sddm.conf.d/`,
+  `sudo cp -r usr/share/sddm/themes/orbital/* /usr/share/sddm/themes/orbital/` and
+  `sudo cp -r boot/grub/themes/ncpt /boot/grub/themes/` (then `sudo grub-mkconfig -o /boot/grub/grub.cfg`).
   Recorded here for reference/restore, not applied by chezmoi (see `.chezmoiignore`).
 - `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer) and `pkglist` (the packages it installs).
 
@@ -28,7 +29,8 @@ Managed with chezmoi source naming.
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, openrouter-credit plugin |
 | `etc/sddm.conf.d/` | SDDM: orbital theme, X11 greeter, cursor theme |
 | `etc/fstab` | btrfs subvols (`@`,`@home`,`@var`), ext4 `/boot`, vfat ESP |
-| `etc/default/grub` | GRUB_TIMEOUT=1 |
+| `boot/grub/themes/ncpt/` | GRUB theme — flat black, GitHub Dark accents, `DejaVu Sans` menu |
+| `etc/default/grub` | GRUB_TIMEOUT=1; `GRUB_THEME=/boot/grub/themes/ncpt/theme.txt` |
 | `etc/mkinitcpio.conf` | no `kms` hook — NVIDIA kept out of the initramfs |
 | `etc/systemd/zram-generator.conf.d/` | zram0 (zstd, 50% RAM) |
 | `etc/xdg/reflector/` | reflector mirrorlist config (freedif excluded) |
