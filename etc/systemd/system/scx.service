@@ -1,0 +1,12 @@
+[Unit]
+Description=sched_ext scheduler (bpfland)
+Documentation=https://github.com/sched-ext/scx
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/scx_bpfland
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
