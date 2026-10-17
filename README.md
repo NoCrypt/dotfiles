@@ -19,7 +19,7 @@ Managed with chezmoi source naming.
 | Path | What |
 | --- | --- |
 | `dot_config/kitty/` | kitty terminal (JetBrainsMono Nerd Font, GitHub Dark colors) |
-| `dot_config/mango/` | mangowm (dwindle, Super-based binds, blur, borders); `keybinds.sh` (Super+/ cheatsheet); `mangobar-preview.sh`; `scripts/knob.sh` (volume knob: plain = volume, Ctrl = brightness, Ctrl+press = which screen, Alt+press = audio output); `scripts/idle.sh` (power-aware idle: AC = screen off only, battery = screen off / lock / suspend, 30 s screen-off while locked, swapped on plug); `scripts/caffeine.sh` (bar coffee toggle; pauses idle management while on); `wlogout/` power menu |
+| `dot_config/mango/` | mangowm (dwindle, Super-based binds, blur, borders); `keybinds.sh` (Super+/ cheatsheet); `scripts/knob.sh` (volume knob: plain = volume, Ctrl = brightness, Ctrl+press = which screen, Alt+press = audio output); `scripts/idle.sh` (power-aware idle: AC = screen off only, battery = screen off / lock / suspend, 30 s screen-off while locked, swapped on plug); `scripts/caffeine.sh` (bar coffee toggle; pauses idle management while on); `wlogout/` power menu |
 | `dot_config/mango/wallpaper/` | wallpapers (`miku-dark.png`, `miku.jpg`) |
 | `dot_config/mangobar/` | status bar — athos-gruv layout, GitHub Dark, rounder/spaced, fuzzel app-list, wlogout power menu, `custom/caffeine` (coffee toggle = prevent idle), `custom/brightness` (scroll = brightness, click = switch screen) |
 | `dot_config/swaylock/` | lock screen — swaylock-effects: blurred screenshot + GitHub Dark clock ring |

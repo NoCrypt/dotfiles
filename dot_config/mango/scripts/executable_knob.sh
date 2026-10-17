@@ -8,10 +8,16 @@
 # The selected screen is kept for the session in $XDG_RUNTIME_DIR.
 set -eu
 
-step=5
+step=2
 state="${XDG_RUNTIME_DIR:-/tmp}/knob-brightness-screen"
 
-# "panel" = built-in panel (brightnessctl), "ddc:N" = external monitor (ddcutil)
+# sets $target: "panel" = built-in panel (brightnessctl), "ddc:N" = ddcutil
+get_target() {
+	target=panel
+	if [ -r "$state" ]; then read -r target < "$state" || target=panel; fi
+	if [ -z "$target" ]; then target=panel; fi
+}
+
 screens() {
 	echo panel
 	if command -v ddcutil >/dev/null 2>&1; then
@@ -19,29 +25,30 @@ screens() {
 	fi
 }
 
-# The bar shows the selected screen's brightness; for a DDC display the value is
-# cached, since a ddcutil read costs as much as a write and would hold up a turn.
+# sets $cur. A ddcutil read costs as much as a write, so it is cached for 60 s.
 ddc_value() {  # $1 = display number
 	cache="$state-ddc$1.value"
-	if [ ! -f "$cache" ] ||
-		[ "$(( $(date +%s) - $(stat -c %Y "$cache") ))" -gt 60 ]; then
-		v="$(ddcutil --display "$1" getvcp 10 2>/dev/null | sed 's/.*= *//;s/,.*//')"
+	if [ -z "$(find "$cache" -mmin -1 2>/dev/null)" ]; then
+		v="$(ddcutil --display "$1" getvcp 10 2>/dev/null | sed -n 's/.*current value = *\([0-9][0-9]*\).*/\1/p')"
 		if [ -n "$v" ]; then printf '%s\n' "$v" > "$cache"; fi
 	fi
-	cat "$cache" 2>/dev/null || true
+	cur=''
+	if [ -r "$cache" ]; then read -r cur < "$cache" || cur=''; fi
 }
 
-# Redraw the bar's brightness module. The guard keeps a bar whose config has no
-# such module from being killed by a signal it does not handle.
+# Redraw the bar's brightness module; skipped if the bar has no such module
+# (an unhandled RTMIN signal would kill it).
 bar_refresh() {
-	grep -q '"signal": 8' "$HOME/.config/mangobar/config.jsonc" 2>/dev/null &&
-		pkill -RTMIN+8 -x mangobar 2>/dev/null
+	if grep -q '"signal": 8' "$HOME/.config/mangobar/config.jsonc" 2>/dev/null; then
+		pkill -RTMIN+8 -x mangobar 2>/dev/null || true
+	fi
 	return 0
 }
 
-# ddcutil costs ~0.3 s per run (it re-arms its DRM watcher on every call), so a
-# fast knob turn would leave a queue of writes lagging behind the hand. One run
-# at a time drains the queue; turns made meanwhile only add their step to it.
+# ddcutil costs ~0.3 s per run, so turns are queued and one run at a time
+# drains the queue as a single relative write. The drainer gives up its
+# lock while still holding the queue lock, so a turn that lands during
+# shutdown is never stranded.
 ddc_turn() {  # $1 = display number, $2 = +N/-N
 	queue="$state-ddc$1"
 	exec 9>>"$queue"
@@ -54,20 +61,21 @@ ddc_turn() {  # $1 = display number, $2 = +N/-N
 		flock 9
 		steps="$(cat "$queue")"
 		: > "$queue"
+		if [ -z "$steps" ]; then
+			flock -u 8
+			flock -u 9
+			break
+		fi
 		flock -u 9
 		total=0
-		for s in $steps; do
-			case "$s" in
-			+*) total=$((total + ${s#+})) ;;
-			-*) total=$((total - ${s#-})) ;;
-			esac
-		done
-		[ "$total" -ne 0 ] || break
+		for s in $steps; do total=$((total + s)); done
+		[ "$total" -ne 0 ] || continue
 		if [ "$total" -gt 0 ]; then sign='+'; count="$total"
 		else sign='-'; count="${total#-}"; fi
-		ddcutil --display "$1" setvcp 10 "$sign" "$count" || break
+		ddcutil --noverify --display "$1" setvcp 10 "$sign" "$count" || break
 		if [ -f "$queue.value" ]; then
-			v=$(( $(cat "$queue.value") + total ))     # keep the bar in step
+			read -r v < "$queue.value" || v=0
+			v=$((v + total))                      # keep the bar in step
 			if [ "$v" -gt 100 ]; then v=100; fi
 			if [ "$v" -lt 0 ]; then v=0; fi
 			printf '%s\n' "$v" > "$queue.value"
@@ -90,31 +98,36 @@ next_in() {
 
 case "${1:-}" in
 up | down)
-	target="$(cat "$state" 2>/dev/null || echo panel)"
+	get_target
 	if [ "$1" = up ]; then dir='+'; else dir='-'; fi
 	if [ "$target" != panel ] && command -v ddcutil >/dev/null 2>&1; then
 		ddc_turn "${target#ddc:}" "$dir$step"
 	else
-		brightnessctl set "${step}%${dir}"
+		brightnessctl -q set "${step}%${dir}"
 		bar_refresh
 	fi
 	;;
 screen)
-	target="$(cat "$state" 2>/dev/null || echo panel)"
+	get_target
 	next_in "$target" "$(screens)" > "$state"
 	bar_refresh
 	;;
 show)
-	target="$(cat "$state" 2>/dev/null || echo panel)"
+	get_target
 	if [ "$target" = panel ]; then
-		cur="$(brightnessctl get)"; max="$(brightnessctl max)"; mark=''
+		mark=''
+		out="$(brightnessctl -m 2>/dev/null || true)"
+		IFS=, read -r _ _ cur _ max <<EOF
+$out
+EOF
 	else
-		cur="$(ddc_value "${target#ddc:}")"; max=100; mark='󰍹 '
+		ddc_value "${target#ddc:}"; max=100; mark='󰍹 '
 	fi
-	if [ -n "$cur" ]; then
+	if [ -n "${cur:-}" ]; then
 		pct=$(( (cur * 100 + max / 2) / max ))
-		icons="$(printf '%s\n' '󰃚 󰃛 󰃜 󰃝 󰃞 󰃟' | cut -d' ' -f$(( pct / 17 + 1 )))"
-		echo "$mark$icons $pct%"
+		set -- 󰃚 󰃛 󰃜 󰃝 󰃞 󰃟
+		shift $(( pct / 17 ))
+		echo "$mark$1 $pct%"
 	fi
 	;;
 sink)
@@ -122,8 +135,8 @@ sink)
 	next="$(next_in "$cur" "$(pactl list short sinks | cut -f2)")"
 	if [ -n "$next" ] && [ "$next" != "$cur" ]; then
 		pactl set-default-sink "$next"
-		for input in $(pactl list short sink-inputs | cut -f1); do
-			pactl move-sink-input "$input" "$next"
+		pactl list short sink-inputs | while read -r id _; do
+			pactl move-sink-input "$id" "$next"
 		done
 	fi
 	;;

@@ -6,15 +6,16 @@
 set -eu
 
 flag="${XDG_RUNTIME_DIR:-/tmp}/caffeine"
-idle="$(dirname "$0")/idle.sh"
 
 case "${1:-show}" in
 show)
-	if [ -e "$flag" ]; then printf '\U000F0176\n'; else printf '\U000F0FAA\n'; fi
+	# UTF-8 bytes as octal escapes: dash's printf has no \U support.
+	# U+F0176 (full cup) / U+F0FAA (slashed cup)
+	if [ -e "$flag" ]; then printf '\363\260\205\266\n'; else printf '\363\260\276\252\n'; fi
 	;;
 toggle)
 	if [ -e "$flag" ]; then rm -f "$flag"; else : >"$flag"; fi
-	"$idle" refresh >/dev/null 2>&1
+	"${0%/*}/idle.sh" refresh >/dev/null 2>&1 || true
 	pkill -RTMIN+9 -x mangobar 2>/dev/null || true
 	;;
 *)
