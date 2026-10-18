@@ -11,13 +11,13 @@ pieces have no declared license; those are called out explicitly.
 | wlogout power menu (layout, style, icons) | https://github.com/DreamMaoMao/dotfile (`hypr/wlogout/`) | files last changed `3fd04f114c25bdd18ece8c98d89add8269763bdd` (2025-11-21); repo HEAD `faf1f92857e8bb0961612b4e70c2a864e8d5c591` | **none declared** (see below) | `dot_config/mango/wlogout/` |
 | Orbital SDDM theme | https://github.com/Rizmi/ryoku-orbital-clock-sddm | base commit `c5d7e33bb3eb1aedfc675c54cddbbc38c062e545` (2026-08-30); `Main.qml` last changed in `851d1ee9abf58c6a2e5e98e56866be960307ef66` (2026-08-20) | GPL-3.0 | `usr/share/sddm/themes/orbital/` |
 | ncpt-tray icon theme | Original work (inherits Adwaita, not vendored) | — | MIT | `dot_local/share/icons/ncpt-tray/` |
-| ncpt GRUB theme | Original work | — | MIT | `boot/grub/themes/ncpt/` |
+| minimal-grub-theme | https://github.com/tomdewildt/minimal-grub-theme | commit `1f3fe66` (2026-06-12) | MIT | `boot/grub/themes/minimal/` |
 
 ## License files included
 
 - `dot_config/mangobar/LICENSE` — GPL-3.0, copied verbatim from upstream `mangowm/mangobar`.
 - `usr/share/sddm/themes/orbital/LICENSE` — GPL-3.0, copied verbatim from upstream `Rizmi/ryoku-orbital-clock-sddm`.
-- `boot/grub/themes/ncpt/LICENSE-DEJAVU` — DejaVu/Bitstream Vera license for the `dejavu_16.pf2` and `dejavu_bold_14.pf2` fonts converted for the GRUB theme.
+- `boot/grub/themes/minimal/LICENSE` — MIT, copied verbatim from upstream `tomdewildt/minimal-grub-theme`.
 
 ## Notes and unknowns
 

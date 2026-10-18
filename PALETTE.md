@@ -15,7 +15,7 @@ File keys (repo root):
 | `kde` | `dot_config/kdeglobals` |
 | `wlogout` | `dot_config/mango/wlogout/style.css` |
 | `opencode` | `dot_config/opencode/themes/github-transparent.json` |
-| `grub` | `boot/grub/themes/ncpt/theme.txt` |
+| `grub` | `boot/grub/themes/minimal/theme.txt` |
 | `sddm` | `usr/share/sddm/themes/orbital/` (`theme.conf`, `Main.qml`) |
 
 ## Background

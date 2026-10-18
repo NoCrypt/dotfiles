@@ -80,8 +80,8 @@ unbootable.
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, `ponytail` plugin, vendored `openrouter-credit` plugin (not loaded) |
 | `etc/sddm.conf.d/` | SDDM: orbital theme, X11 greeter, cursor theme |
 | `etc/fstab` | btrfs subvols (`@`,`@home`,`@var`), ext4 `/boot`, vfat ESP; no snapshots configured |
-| `boot/grub/themes/ncpt/` | GRUB theme — flat black, GitHub Dark accents, `DejaVu Sans` menu |
-| `etc/default/grub` | GRUB_TIMEOUT=1; `GRUB_THEME=/boot/grub/themes/ncpt/theme.txt` |
+| `boot/grub/themes/minimal/` | GRUB theme — minimal Terminus text on black (`tomdewildt/minimal-grub-theme`) |
+| `etc/default/grub` | GRUB_TIMEOUT=1; `GRUB_THEME=/boot/grub/themes/minimal/theme.txt` |
 | `etc/mkinitcpio.conf` | no `kms` hook, so nouveau is not loaded before the root subvolume is mounted; the installer's `/etc/mkinitcpio.conf.d/nvidia.conf` drop-in is the exception that embeds the NVIDIA modules |
 | `etc/systemd/zram-generator.conf.d/` | zram0 (zstd, 50% RAM; needs `zram-generator`) |
 | `etc/xdg/reflector/` | reflector mirrorlist config (freedif excluded; reason not recorded — see the file) |

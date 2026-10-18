@@ -22,7 +22,7 @@ MAPPINGS=(
     "etc/pacman.conf|/etc/pacman.conf|yes"
     "usr/share/sddm/scripts/Xsetup|/usr/share/sddm/scripts/Xsetup|yes"
     "usr/share/sddm/themes/orbital|/usr/share/sddm/themes/orbital|yes"
-    "boot/grub/themes/ncpt|/boot/grub/themes/ncpt|yes"
+    "boot/grub/themes/minimal|/boot/grub/themes/minimal|yes"
     "etc/fstab|/etc/fstab|no"
 )
 

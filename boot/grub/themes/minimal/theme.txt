@@ -1,0 +1,36 @@
+title-text: ""
+desktop-color: "#000000"
+terminal-font: "Terminus 16"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
++ boot_menu {
+    top = 30%
+    left = 30%
+    width = 45%
+    height = 60%
+    item_font = "Terminus 16"
+    item_color = "#cccccc"
+    selected_item_color = "#ffffff"
+    icon_width = 64
+    icon_height = 64
+    item_icon_space = 8
+    item_height = 64
+    item_padding = 2
+    item_spacing = 8
+    selected_item_pixmap_style = "select_*.png"
+}
+
++ label {
+    id = "__timeout__"
+    top = 82%
+    left = 0
+    width = 100%
+    align = "center"
+    font = "Terminus 14"
+    color = "#cccccc"
+    text = "Booting in %d seconds"
+}
