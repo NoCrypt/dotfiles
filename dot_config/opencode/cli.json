@@ -3,5 +3,12 @@
   "theme": {
     "name": "github-transparent",
     "mode": "dark"
+  },
+  "session": {
+    "grouping": "auto"
+  },
+  "animations": true,
+  "keybinds": {
+    "terminal.suspend": "none"
   }
 }
