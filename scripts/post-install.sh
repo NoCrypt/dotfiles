@@ -31,7 +31,9 @@ PKG_DESKTOP=(mangowm xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr
              swayidle wlr-randr jq wl-clipboard grim slurp satty cliphist
              wl-clip-persist wlsunset swayosd gpu-screen-recorder libnotify
              tesseract tesseract-data-eng network-manager-applet blueman
-             ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji)
+             ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji
+             dolphin ffmpegthumbs kimageformats plasma-integration
+             papirus-icon-theme)
 # mangobar-git's PKGBUILD lists fewer deps than upstream meson.build requires,
 # so everything meson.build asks for is installed up front.
 PKG_MANGOBAR_DEPS=(cjson fcft tllist pixman wayland wayland-protocols cairo pango

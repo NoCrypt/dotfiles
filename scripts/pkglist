@@ -70,6 +70,11 @@ blueman
 ttf-jetbrains-mono-nerd
 noto-fonts
 noto-fonts-emoji
+dolphin
+ffmpegthumbs
+kimageformats
+plasma-integration
+papirus-icon-theme
 
 # PKG_MANGOBAR_DEPS
 cjson

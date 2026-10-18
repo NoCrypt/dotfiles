@@ -1,12 +1,16 @@
 #!/bin/sh
-# OCR the focused window into the clipboard (right-click on the bar title).
+# OCR a frozen screen region into the clipboard (right-click on the bar title).
 set -eu
 
 command -v tesseract >/dev/null 2>&1 || exit 0
-geom=$(mmsg get focusing-client | jq -r '"\(.x),\(.y) \(.width)x\(.height)"')
-[ -n "$geom" ] || exit 0
 
 tmp=$(mktemp --suffix=.png)
 trap 'rm -f "$tmp"' EXIT
-grim -g "$geom" "$tmp"
-tesseract "$tmp" - 2>/dev/null | wl-copy
+
+still -c 'slurp | grim -g- -' >"$tmp" || true
+[ -s "$tmp" ] || exit 0
+
+text=$(tesseract "$tmp" - 2>/dev/null | tr -d '\f')
+[ -n "$text" ] || exit 0
+
+printf '%s\n' "$text" | wl-copy

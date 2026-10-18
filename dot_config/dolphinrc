@@ -1,0 +1,20 @@
+[DetailsMode]
+PreviewSize=32
+
+[General]
+ConfirmDelete=true
+GlobalViewProps=true
+PreviewsShown=true
+ShowFilterBar=true
+ShowFullPath=true
+ShowSpaceInfo=true
+ShowStatusBar=true
+SortRole=name
+ViewMode=Details
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[MainWindow]
+MenuBar=Disabled
