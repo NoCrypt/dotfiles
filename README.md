@@ -71,7 +71,7 @@ unbootable.
 | `dot_config/gtk-3.0/` | GTK3 icon theme = `ncpt-tray` (used by mangobar's tray lookup) |
 | `dot_config/kdeglobals`, `dot_config/dolphinrc`, `dot_local/share/dolphin/` | Dolphin file manager — GitHub Dark KDE palette, Google Sans Flex 11, Papirus-Dark icons, Details view with previews |
 | `dot_local/share/icons/ncpt-tray/` | Nerd Font glyph overrides for tray icons (`nm-*`, `blueman-tray`), inherits Adwaita |
-| `dot_config/mako/` | notification daemon — GitHub Dark, 14 pt JetBrainsMono, 420 px wide |
+| `dot_config/mako/` | notification daemon — GitHub Dark, 14 pt JetBrainsMono, 420 px wide; left click a screenshot notification opens it in imv |
 | `dot_config/swaylock/` | lock screen — swaylock-effects: blurred screenshot + GitHub Dark clock ring |
 | `dot_config/fuzzel/` | launcher (GitHub Dark) |
 | `dot_config/fontconfig/` | monospace → JetBrainsMono Nerd Font; sans-serif/sans → Google Sans Flex |
@@ -110,6 +110,7 @@ unbootable.
 | `scripts/record.sh` | Super+J | GPU recording to `$XDG_VIDEOS_DIR` (default `~/video`), notifications, bar capsule |
 | `scripts/screenshot.sh` | Super+Shift+S | frozen region → satty |
 | `scripts/screenshot-full.sh` | Super+S / Super+Ctrl+S | full screen → copy; Super+Ctrl+S also opens satty |
+| `scripts/notif-open.sh` | mako left click | open the file a screenshot notification points at in imv |
 | `wallpaper/` | | `miku-light.jpg` (used by `swaybg` in `config.conf`), `miku-dark.png`, `miku.jpg` |
 | `wlogout/` | Super+Escape | power menu (also the bar power icon) |
 

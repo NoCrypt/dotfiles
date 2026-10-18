@@ -10,3 +10,7 @@ text-color=#c9d1d9
 progress-color=over #58a6ff44
 max-icon-size=128
 default-timeout=10000
+
+# left click a screenshot notification opens the file in imv
+[app-name="screenshot"]
+on-button-left=exec /home/ncpt/.config/mango/scripts/notif-open.sh "$id"
