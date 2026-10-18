@@ -96,6 +96,7 @@ mangobar-git
 swaylock-effects
 bibata-cursor-theme-bin
 still
+pwvucontrol
 
 # Added automatically depending on hardware:
 #   intel-ucode | amd-ucode              (CPU vendor)

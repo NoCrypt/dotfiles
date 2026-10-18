@@ -1,0 +1,8 @@
+SUBSYSTEM!="sound", GOTO="pipewire_end"
+ACTION!="change", GOTO="pipewire_end"
+KERNEL!="card*", GOTO="pipewire_end"
+
+SUBSYSTEMS=="pci", ATTRS{vendor}=="0x1022", ATTRS{device}=="0x15e3", \
+ENV{ACP_PROFILE_SET}="/etc/alsa-card-profile/mixer/profile-sets/split-ports-profile.conf"
+
+LABEL="pipewire_end"

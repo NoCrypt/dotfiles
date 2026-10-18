@@ -38,7 +38,7 @@ PKG_DESKTOP=(mangowm xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr
 # so everything meson.build asks for is installed up front.
 PKG_MANGOBAR_DEPS=(cjson fcft tllist pixman wayland wayland-protocols cairo pango
                    libpulse gdk-pixbuf2 systemd-libs meson ninja)
-PKG_AUR=(mangobar-git swaylock-effects bibata-cursor-theme-bin still)
+PKG_AUR=(mangobar-git swaylock-effects bibata-cursor-theme-bin still pwvucontrol)
 
 if [[ "${1:-}" == "--list" ]]; then
   for grp in PKG_BASE PKG_BOOT PKG_NET PKG_AUDIO PKG_POWER PKG_DESKTOP PKG_MANGOBAR_DEPS PKG_AUR; do

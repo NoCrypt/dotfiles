@@ -88,6 +88,7 @@ unbootable.
 | `etc/xdg/reflector/` | reflector mirrorlist config (freedif excluded; reason not recorded — see the file) |
 | `etc/pacman.conf` | repos incl. chaotic-aur (needs `chaotic-keyring` + `chaotic-mirrorlist`, key signed first) |
 | `usr/share/sddm/scripts/Xsetup` | reverse-PRIME: power on the external monitor; dark the laptop panel when docked |
+| `etc/alsa-card-profile/`, `etc/udev/rules.d/91-pipewire-alsa-port-split.rules`, `etc/modprobe.d/alsa-base.conf`, `usr/lib/firmware/hda-jack-retask.fw` | split the ALC256 speakers and headphone jack into two independent PipeWire sinks (ALSA `indep_hp=yes` + custom ACP profile set) |
 | `usr/share/sddm/themes/orbital/` | orbital theme + image background (`Main.qml` edited to add it) |
 | `scripts/post-install.sh` | lean Arch installer (mango + mangobar, GRUB, NVIDIA/ASUS, PipeWire, NetworkManager, SDDM); run as root on a fresh install |
 | `scripts/pkglist` | packages that installer pulls in — `post-install.sh --list`; regenerate with `bash scripts/post-install.sh --list > scripts/pkglist` |

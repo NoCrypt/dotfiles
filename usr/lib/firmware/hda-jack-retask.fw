@@ -1,0 +1,6 @@
+[codec]
+0x10ec0256 0x10431e21 0
+
+[hints]
+indep_hp=yes
+vmaster=no
