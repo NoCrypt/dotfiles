@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=OpenCode
+Comment=AI coding agent (terminal UI)
+Exec=opencode
+Icon=utilities-terminal
+Terminal=true
+Categories=Development;
+Keywords=ai;code;agent;tui;
