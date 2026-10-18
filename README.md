@@ -69,12 +69,13 @@ unbootable.
 | `dot_config/mango/` | mangowm — settings, keybinds and helper scripts, listed [below](#mango) |
 | `dot_config/mangobar/` | status bar — athos-gruv layout, GitHub Dark, rounder/spaced, fuzzel app-list, wlogout power menu, `custom/caffeine` (coffee toggle = prevent idle), `custom/brightness` (scroll = brightness, click = switch screen), `custom/record` (red recording capsule), tray icons from the `ncpt-tray` glyph theme |
 | `dot_config/gtk-3.0/` | GTK3 icon theme = `ncpt-tray` (used by mangobar's tray lookup) |
-| `dot_config/kdeglobals`, `dot_config/dolphinrc`, `dot_local/share/dolphin/` | Dolphin file manager — GitHub Dark KDE palette, Noto Sans 11, Papirus-Dark icons, Details view with previews |
+| `dot_config/kdeglobals`, `dot_config/dolphinrc`, `dot_local/share/dolphin/` | Dolphin file manager — GitHub Dark KDE palette, Google Sans Flex 11, Papirus-Dark icons, Details view with previews |
 | `dot_local/share/icons/ncpt-tray/` | Nerd Font glyph overrides for tray icons (`nm-*`, `blueman-tray`), inherits Adwaita |
 | `dot_config/mako/` | notification daemon — GitHub Dark, 14 pt JetBrainsMono, 420 px wide |
 | `dot_config/swaylock/` | lock screen — swaylock-effects: blurred screenshot + GitHub Dark clock ring |
 | `dot_config/fuzzel/` | launcher (GitHub Dark) |
-| `dot_config/fontconfig/` | monospace → JetBrainsMono Nerd Font |
+| `dot_config/fontconfig/` | monospace → JetBrainsMono Nerd Font; sans-serif/sans → Google Sans Flex |
+| `dot_local/share/fonts/GoogleSansFlex/` | Google Sans Flex variable font (UI text) + OFL license |
 | `dot_config/fastfetch/` | fastfetch config + logo image (`miku.png`) |
 | `dot_config/private_fish/` | fish shell (ctrl-h / ctrl-arrow / ctrl-backspace word binds) |
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, `ponytail` plugin, vendored `openrouter-credit` plugin (not loaded) |

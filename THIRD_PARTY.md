@@ -10,6 +10,7 @@ pieces have no declared license; those are called out explicitly.
 | mangobar config + style | https://github.com/mangowm/mangobar | `f543ddd3af0073a6cfaf17cda1b4926b8a27806c` (r77, 2026-10-16; matches installed `mangobar-git r77.f543ddd-1`) | GPL-3.0 | `dot_config/mangobar/` |
 | wlogout power menu (layout, style, icons) | https://github.com/DreamMaoMao/dotfile (`hypr/wlogout/`) | files last changed `3fd04f114c25bdd18ece8c98d89add8269763bdd` (2025-11-21); repo HEAD `faf1f92857e8bb0961612b4e70c2a864e8d5c591` | **none declared** (see below) | `dot_config/mango/wlogout/` |
 | Orbital SDDM theme | https://github.com/Rizmi/ryoku-orbital-clock-sddm | base commit `c5d7e33bb3eb1aedfc675c54cddbbc38c062e545` (2026-08-30); `Main.qml` last changed in `851d1ee9abf58c6a2e5e98e56866be960307ef66` (2026-08-20) | GPL-3.0 | `usr/share/sddm/themes/orbital/` |
+| Google Sans Flex | https://github.com/google/fonts/tree/main/ofl/googlesansflex | font blob `1d8d8ae5a7c6d0e48312d2a0a478bad92caee73a` | OFL-1.1 | `dot_local/share/fonts/GoogleSansFlex/` |
 | ncpt-tray icon theme | Original work (inherits Adwaita, not vendored) | — | MIT | `dot_local/share/icons/ncpt-tray/` |
 | minimal-grub-theme | https://github.com/tomdewildt/minimal-grub-theme | commit `1f3fe66` (2026-06-12) | MIT | `boot/grub/themes/minimal/` |
 

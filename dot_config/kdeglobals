@@ -2,11 +2,11 @@
 ColorScheme=GitHubDark
 Name=GitHubDark
 TerminalApplication=kitty
-font=Noto Sans,11,-1,5,50,0,0,0,0,0
+font=Google Sans Flex,11,-1,5,50,0,0,0,0,0
 fixed=JetBrainsMono Nerd Font Mono,11,-1,5,50,0,0,0,0,0
-menuFont=Noto Sans,11,-1,5,50,0,0,0,0,0
-toolBarFont=Noto Sans,11,-1,5,50,0,0,0,0,0
-smallestReadableFont=Noto Sans,9,-1,5,50,0,0,0,0,0
+menuFont=Google Sans Flex,11,-1,5,50,0,0,0,0,0
+toolBarFont=Google Sans Flex,11,-1,5,50,0,0,0,0,0
+smallestReadableFont=Google Sans Flex,9,-1,5,50,0,0,0,0,0
 XftAntialias=true
 XftHintStyle=hintslight
 XftSubPixel=rgb
