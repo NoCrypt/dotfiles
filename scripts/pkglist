@@ -58,6 +58,8 @@ grim
 slurp
 satty
 cliphist
+imv
+mpv
 wl-clip-persist
 wlsunset
 swayosd

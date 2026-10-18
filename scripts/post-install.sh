@@ -29,6 +29,7 @@ PKG_POWER=(power-profiles-daemon upower brightnessctl ddcutil)
 PKG_DESKTOP=(mangowm xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr
              xdg-desktop-portal-gtk polkit polkit-gnome foot fuzzel mako swaybg
              swayidle wlr-randr jq wl-clipboard grim slurp satty cliphist
+             imv mpv
              wl-clip-persist wlsunset swayosd gpu-screen-recorder libnotify
              tesseract tesseract-data-eng network-manager-applet blueman
              ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji
