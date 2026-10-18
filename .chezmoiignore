@@ -4,4 +4,9 @@ usr
 boot
 screenshot.png
 scripts
-.config/opencode/skills/localsend-send
+.config/opencode/skills
+.config/fish/fish_variables
+LICENSE
+THIRD_PARTY.md
+PALETTE.md
+AGENT_TASKS.md

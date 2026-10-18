@@ -1,5 +1,18 @@
 {
+  "$schema": "https://opencode.ai/config.json",
   "plugins": [
     "@dietrichgebert/ponytail"
-  ]
+  ],
+  "providers": {
+    "openrouter": {
+      "settings": {
+        "headerTimeout": 15000
+      }
+    },
+    "deepseek": {
+      "settings": {
+        "headerTimeout": 15000
+      }
+    }
+  }
 }

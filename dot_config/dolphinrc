@@ -12,6 +12,9 @@ ShowStatusBar=true
 SortRole=name
 ViewMode=Details
 
+[IconsMode]
+PreviewSize=208
+
 [KFileDialog Settings]
 Places Icons Auto-resize=false
 Places Icons Static Size=22
