@@ -28,12 +28,15 @@ PKG_AUDIO=(pipewire pipewire-alsa pipewire-pulse pipewire-audio wireplumber rtki
 PKG_POWER=(power-profiles-daemon upower brightnessctl ddcutil)
 PKG_DESKTOP=(mangowm xorg-xwayland xdg-desktop-portal xdg-desktop-portal-wlr
              xdg-desktop-portal-gtk polkit polkit-gnome foot fuzzel mako swaybg
-             swayidle wlr-randr jq wl-clipboard grim slurp ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji)
+             swayidle wlr-randr jq wl-clipboard grim slurp satty cliphist
+             wl-clip-persist wlsunset swayosd gpu-screen-recorder libnotify
+             tesseract tesseract-data-eng network-manager-applet blueman
+             ttf-jetbrains-mono-nerd noto-fonts noto-fonts-emoji)
 # mangobar-git's PKGBUILD lists fewer deps than upstream meson.build requires,
 # so everything meson.build asks for is installed up front.
 PKG_MANGOBAR_DEPS=(cjson fcft tllist pixman wayland wayland-protocols cairo pango
                    libpulse gdk-pixbuf2 systemd-libs meson ninja)
-PKG_AUR=(mangobar-git swaylock-effects)
+PKG_AUR=(mangobar-git swaylock-effects bibata-cursor-theme-bin still)
 
 if [[ "${1:-}" == "--list" ]]; then
   for grp in PKG_BASE PKG_BOOT PKG_NET PKG_AUDIO PKG_POWER PKG_DESKTOP PKG_MANGOBAR_DEPS PKG_AUR; do

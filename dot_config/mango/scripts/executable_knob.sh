@@ -102,6 +102,9 @@ up | down)
 	if [ "$1" = up ]; then dir='+'; else dir='-'; fi
 	if [ "$target" != panel ] && command -v ddcutil >/dev/null 2>&1; then
 		ddc_turn "${target#ddc:}" "$dir$step"
+	elif command -v swayosd-client >/dev/null 2>&1; then
+		swayosd-client --brightness "$dir$step" --min-brightness 1
+		bar_refresh
 	else
 		brightnessctl -q set "${step}%${dir}"
 		bar_refresh

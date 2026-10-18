@@ -124,7 +124,7 @@
 
 /* Custom modules use #custom-<name> (e.g. custom/power -> #custom-power) */
 #custom-power {
-    margin: 0px 5px;
+    margin: 0px 0px 0px 5px;
     background-color: #58a6ff;
     color: #0d1117;
 }
@@ -145,6 +145,13 @@
     background-color: #0d1117;
     color: #8b949e;
 }
+
+/* Recording indicator: only visible while record.sh reports an active recording */
+#custom-record {
+    background-color: #f85149;   /* danger red */
+    color: #0d1117;
+}
+
 
 #tray {
     background-color: #161b22;   /* canvas.subtle */

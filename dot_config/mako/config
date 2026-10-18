@@ -1,0 +1,12 @@
+# mako notification daemon — GitHub Dark, readable size
+font=JetBrainsMono Nerd Font 14
+width=420
+padding=14
+margin=10
+border-size=2
+border-color=#30363d
+background-color=#161b22ee
+text-color=#c9d1d9
+progress-color=over #58a6ff44
+max-icon-size=128
+default-timeout=10000

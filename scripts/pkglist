@@ -56,6 +56,17 @@ jq
 wl-clipboard
 grim
 slurp
+satty
+cliphist
+wl-clip-persist
+wlsunset
+swayosd
+gpu-screen-recorder
+libnotify
+tesseract
+tesseract-data-eng
+network-manager-applet
+blueman
 ttf-jetbrains-mono-nerd
 noto-fonts
 noto-fonts-emoji
@@ -78,6 +89,8 @@ ninja
 # PKG_AUR
 mangobar-git
 swaylock-effects
+bibata-cursor-theme-bin
+still
 
 # Added automatically depending on hardware:
 #   intel-ucode | amd-ucode              (CPU vendor)

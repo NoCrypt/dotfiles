@@ -1,0 +1,12 @@
+[Icon Theme]
+Name=ncpt-tray
+Comment=GitHub Dark Nerd Font tray icons
+Inherits=Adwaita,hicolor
+Directories=scalable/status
+
+[scalable/status]
+Size=24
+Type=Scalable
+MinSize=8
+MaxSize=256
+Context=Status
