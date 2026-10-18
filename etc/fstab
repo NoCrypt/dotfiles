@@ -1,3 +1,6 @@
+# Reference-only copy for this machine. Do not deploy as-is: UUIDs and
+# subvolume layout are machine-specific. See fstab(5).
+#
 # Static information about the filesystems.
 # See fstab(5) for details.
 
