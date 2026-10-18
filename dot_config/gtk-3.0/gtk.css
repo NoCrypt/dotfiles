@@ -1,0 +1,55 @@
+/* GitHub Dark overrides for GTK3 (Adwaita dark) */
+@define-color theme_bg_color #0d1117;
+@define-color theme_fg_color #c9d1d9;
+@define-color theme_base_color #0d1117;
+@define-color theme_text_color #c9d1d9;
+@define-color theme_selected_bg_color #1f6feb;
+@define-color theme_selected_fg_color #ffffff;
+@define-color insensitive_bg_color #161b22;
+@define-color insensitive_fg_color #8b949e;
+@define-color insensitive_base_color #161b22;
+@define-color theme_unfocused_bg_color #0d1117;
+@define-color theme_unfocused_fg_color #c9d1d9;
+@define-color theme_unfocused_base_color #0d1117;
+@define-color theme_unfocused_text_color #c9d1d9;
+@define-color theme_unfocused_selected_bg_color #1f6feb;
+@define-color theme_unfocused_selected_fg_color #ffffff;
+@define-color borders #30363d;
+@define-color unfocused_borders #30363d;
+@define-color content_view_bg #0d1117;
+@define-color text_view_bg #0d1117;
+@define-color warning_color #d29922;
+@define-color error_color #f85149;
+@define-color success_color #3fb950;
+
+headerbar,
+.titlebar {
+    background-color: #161b22;
+    color: #c9d1d9;
+    border-color: #30363d;
+}
+
+window,
+window.background,
+.background {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+.view,
+treeview.view,
+list,
+iconview {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+headerbar {
+    background-image: none;
+    background-color: #161b22;
+    color: #c9d1d9;
+}
+menubar,
+toolbar,
+statusbar {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}

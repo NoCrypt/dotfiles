@@ -93,6 +93,10 @@
     background-color: #0d1117;
     color: #8b949e;
 }
+#custom-memory {
+    background-color: #0d1117;   /* same as #mem */
+    color: #8b949e;
+}
 #custom-brightness {
     background-color: #0d1117;   /* same as #mem */
     color: #8b949e;
@@ -168,8 +172,8 @@ menuitem {
     color: #c9d1d9;
 }
 menuitem:hover {
-    color: #0d1117;
-    background-color: #3fb950;   /* success green */
+    color: #ffffff;
+    background-color: #1f6feb;   /* selection blue */
 }
 
 #hideclients {

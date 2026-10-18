@@ -26,7 +26,7 @@
         // "keymode",
         // "keyboardlayout",
         "cpu",
-        "memory",
+        "custom/memory",
         //"pulseaudio",
         "custom/brightness",
         "battery",
@@ -78,12 +78,14 @@
         "format": " {}"
     },
     "cpu": {
-        "format": " {load}%",
+        "format": " {usage}%",
 	"on-click": "foot -e gotop"
     },
-    "memory": {
-        "format": " {}%",
-	"on-click": "foot -e gotop"
+    "custom/memory": {
+        "format": " {usage}",
+        "exec": "/home/ncpt/.config/mango/scripts/memory.sh",
+        "interval": 5,
+        "on-click": "foot -e gotop"
     },
     "pulseaudio": {
         "format": "{icon} {volume}% {bt}",
