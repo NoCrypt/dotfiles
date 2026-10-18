@@ -1,6 +1,10 @@
 # GRUB boot loader configuration
 
 GRUB_DEFAULT=saved
+# 1 s keeps boot quiet, then the saved entry boots. The menu is visible for
+# that second (GRUB_TIMEOUT_STYLE=menu below): tap Shift or Esc repeatedly
+# right after the firmware splash to cancel the countdown and stay in it.
+# Tradeoff: easy to miss with a slow or Bluetooth keyboard. 3 s would be safer.
 GRUB_TIMEOUT=1
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"

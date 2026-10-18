@@ -48,7 +48,7 @@ unbootable.
 | `dot_config/private_fish/` | fish shell (ctrl-arrow / ctrl-backspace word binds) |
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, openrouter-credit plugin |
 | `etc/sddm.conf.d/` | SDDM: orbital theme, X11 greeter, cursor theme |
-| `etc/fstab` | btrfs subvols (`@`,`@home`,`@var`), ext4 `/boot`, vfat ESP |
+| `etc/fstab` | btrfs subvols (`@`,`@home`,`@var`), ext4 `/boot`, vfat ESP; no snapshots configured |
 | `boot/grub/themes/ncpt/` | GRUB theme — flat black, GitHub Dark accents, `DejaVu Sans` menu |
 | `etc/default/grub` | GRUB_TIMEOUT=1; `GRUB_THEME=/boot/grub/themes/ncpt/theme.txt` |
 | `etc/mkinitcpio.conf` | no `kms` hook — NVIDIA kept out of the initramfs |
