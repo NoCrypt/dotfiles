@@ -87,9 +87,9 @@ unbootable.
 | `etc/systemd/zram-generator.conf.d/` | zram0 (zstd, 50% RAM; needs `zram-generator`) |
 | `etc/xdg/reflector/` | reflector mirrorlist config (freedif excluded; reason not recorded — see the file) |
 | `etc/pacman.conf` | repos incl. chaotic-aur (needs `chaotic-keyring` + `chaotic-mirrorlist`, key signed first) |
-| `usr/share/sddm/scripts/Xsetup` | reverse-PRIME: power on the external monitor; dark the laptop panel when docked |
+| `usr/share/sddm/scripts/Xsetup` | reverse-PRIME: power on the external monitor at 2560x1440@165; dark the laptop panel when docked |
 | `etc/alsa-card-profile/`, `etc/udev/rules.d/91-pipewire-alsa-port-split.rules`, `etc/modprobe.d/alsa-base.conf`, `usr/lib/firmware/hda-jack-retask.fw` | split the ALC256 speakers and headphone jack into two independent PipeWire sinks (ALSA `indep_hp=yes` + custom ACP profile set) |
-| `usr/share/sddm/themes/orbital/` | orbital theme + image background (`Main.qml` edited to add it) |
+| `usr/share/sddm/themes/orbital/` | orbital SDDM theme (stock black background, `themeMode=dark`) |
 | `scripts/post-install.sh` | lean Arch installer (mango + mangobar, GRUB, NVIDIA/ASUS, PipeWire, NetworkManager, SDDM); run as root on a fresh install |
 | `scripts/pkglist` | packages that installer pulls in — `post-install.sh --list`; regenerate with `bash scripts/post-install.sh --list > scripts/pkglist` |
 
@@ -107,10 +107,11 @@ unbootable.
 | `scripts/nightlight.sh` | Super+Alt+N | wlsunset on/off |
 | `scripts/ocr.sh` | bar title right-click | frozen region → tesseract → clipboard |
 | `scripts/panel.sh` | Super+Alt+P | laptop panel off/on |
+| `scripts/powerprofile.sh` | Super+P | cycle power profile quiet → balanced → performance (power-profiles-daemon, asusd follows) with a `swayosd` OSD |
 | `scripts/record.sh` | Super+J | GPU recording to `$XDG_VIDEOS_DIR` (default `~/video`), notifications, bar capsule |
-| `scripts/screenshot.sh` | Super+Shift+S | frozen region → satty |
+| `scripts/screenshot.sh` | Super+Shift+S | frozen region → clipboard + notification (click it to annotate in satty) |
 | `scripts/screenshot-full.sh` | Super+S / Super+Ctrl+S | full screen → copy; Super+Ctrl+S also opens satty |
-| `scripts/notif-open.sh` | mako left click | open the file a screenshot notification points at in imv |
+| `scripts/notif-open.sh` | mako left click | open the file a screenshot notification points at in satty |
 | `wallpaper/` | | `miku-light.jpg` (used by `swaybg` in `config.conf`), `miku-dark.png`, `miku.jpg` |
 | `wlogout/` | Super+Escape | power menu (also the bar power icon) |
 

@@ -1,6 +1,9 @@
 # mako notification daemon — GitHub Dark, readable size
 font=JetBrainsMono Nerd Font 14
-width=420
+width=520
+# 100 (default) fits only 2 text lines: a wrapped 2-line title ate the body.
+# 160 gives ~5 lines, so long titles wrap but the message still shows.
+height=160
 padding=14
 margin=10
 border-size=2
@@ -11,6 +14,6 @@ progress-color=over #58a6ff44
 max-icon-size=128
 default-timeout=10000
 
-# left click a screenshot notification opens the file in imv
+# left click a screenshot notification opens the file in satty
 [app-name="screenshot"]
 on-button-left=exec /home/ncpt/.config/mango/scripts/notif-open.sh "$id"

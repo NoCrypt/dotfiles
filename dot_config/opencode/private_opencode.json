@@ -14,5 +14,17 @@
         "headerTimeout": 15000
       }
     }
-  }
+  },
+  "permissions": [
+    { "action": "shell", "resource": "rm *", "effect": "ask" },
+    { "action": "shell", "resource": "sudo rm *", "effect": "ask" },
+    { "action": "shell", "resource": "shred *", "effect": "ask" },
+    { "action": "shell", "resource": "truncate *", "effect": "ask" },
+    { "action": "shell", "resource": "dd *", "effect": "ask" },
+    { "action": "shell", "resource": "mkfs*", "effect": "ask" },
+    { "action": "shell", "resource": "find * -delete*", "effect": "ask" },
+    { "action": "shell", "resource": "git clean *", "effect": "ask" },
+    { "action": "shell", "resource": "git reset --hard*", "effect": "ask" },
+    { "action": "shell", "resource": "git checkout -- *", "effect": "ask" }
+  ]
 }

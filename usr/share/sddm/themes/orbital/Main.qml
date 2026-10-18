@@ -11,21 +11,6 @@ Rectangle {
         cursorShape: Qt.ArrowCursor
         z: -1
     }
-    // Wallpaper background
-    Image {
-        anchors.fill: parent
-        source: "background.png"
-        fillMode: Image.PreserveAspectCrop
-        asynchronous: true
-    }
-
-    // Dim overlay so the theme text stays readable
-    Rectangle {
-        anchors.fill: parent
-        color: "#000000"
-        opacity: 0.4
-    }
-
     id: root
     readonly property real s: Screen.height / 768
     width: Screen.width

@@ -46,15 +46,9 @@ or redistributed, replace these icons/configs or obtain permission.
 ### Orbital SDDM theme (`usr/share/sddm/themes/orbital/`)
 
 Upstream GPL-3.0. This copy is a subset (`Main.qml`, `metadata.desktop`,
-`theme.conf`; no upstream `font/` or `preview.gif`). `metadata.desktop` and
-`theme.conf` are identical to upstream at the base commit. `Main.qml` adds an
-image background and a dim overlay — see `LOCAL_CHANGES.md` and
-`LOCAL_CHANGES.patch`.
-
-`background.png` (3840x2160 Hatsune Miku fan artwork) was added locally. Its
-artist/source is unknown and it is **not** covered by the GPL-3.0 license of
-the theme or by this repository's MIT license. It should be replaced with an
-original or clearly-licensed image before redistribution.
+`theme.conf`; no upstream `font/` or `preview.gif`). All three files are
+identical to upstream at the base commit; no local modifications. The theme
+uses its stock black dark-mode background.
 
 ### Artwork elsewhere
 
