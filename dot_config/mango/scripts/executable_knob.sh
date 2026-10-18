@@ -11,6 +11,16 @@ set -eu
 step=2
 state="${XDG_RUNTIME_DIR:-/tmp}/knob-brightness-screen"
 
+die() {
+	if command -v notify-send >/dev/null 2>&1; then
+		notify-send -a knob "Brightness/audio failed" "$1"
+	fi
+	printf '%s: %s\n' "${0##*/}" "$1" >&2
+	exit 1
+}
+
+need() { command -v "$1" >/dev/null 2>&1 || die "$1 is not installed"; }
+
 # sets $target: "panel" = built-in panel (brightnessctl), "ddc:N" = ddcutil
 get_target() {
 	target=panel
@@ -100,12 +110,14 @@ case "${1:-}" in
 up | down)
 	get_target
 	if [ "$1" = up ]; then dir='+'; else dir='-'; fi
-	if [ "$target" != panel ] && command -v ddcutil >/dev/null 2>&1; then
+	if [ "$target" != panel ]; then
+		need ddcutil
 		ddc_turn "${target#ddc:}" "$dir$step"
 	elif command -v swayosd-client >/dev/null 2>&1; then
 		swayosd-client --brightness "$dir$step" --min-brightness 1
 		bar_refresh
 	else
+		need brightnessctl
 		brightnessctl -q set "${step}%${dir}"
 		bar_refresh
 	fi
@@ -134,7 +146,8 @@ EOF
 	fi
 	;;
 sink)
-	cur="$(pactl get-default-sink)"
+	need pactl
+	cur="$(pactl get-default-sink)" || die "pactl could not list sinks"
 	next="$(next_in "$cur" "$(pactl list short sinks | cut -f2)")"
 	if [ -n "$next" ] && [ "$next" != "$cur" ]; then
 		pactl set-default-sink "$next"

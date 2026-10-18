@@ -2,7 +2,13 @@
 # OCR a frozen screen region into the clipboard (right-click on the bar title).
 set -eu
 
-command -v tesseract >/dev/null 2>&1 || exit 0
+for t in still slurp grim tesseract wl-copy; do
+	if ! command -v "$t" >/dev/null 2>&1; then
+		command -v notify-send >/dev/null 2>&1 &&
+			notify-send -a ocr "OCR failed" "$t is not installed"
+		exit 1
+	fi
+done
 
 tmp=$(mktemp --suffix=.png)
 trap 'rm -f "$tmp"' EXIT

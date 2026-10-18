@@ -6,8 +6,9 @@
 # All timeouts count seconds since the LAST INPUT, not since the state began.
 # Fullscreen windows (and apps that hold an idle inhibitor) stay unlocked.
 # Caffeine (scripts/caffeine.sh) stops idle management entirely while its flag
-# exists. The AC adapter and lock state are polled; `refresh` makes the running
-# daemon re-evaluate at once (caffeine uses it). Edit the numbers below.
+# exists. The AC adapter and lock state are polled; `refresh` wakes the running
+# daemon, or starts one if it died, so idle management always comes back. Edit
+# the numbers below.
 set -eu
 
 AC_SCREEN=600
@@ -20,6 +21,22 @@ POLL=3
 run="${XDG_RUNTIME_DIR:-/tmp}"
 flag="$run/caffeine"
 pidfile="$run/idle.pid"
+
+die() {
+	if command -v notify-send >/dev/null 2>&1; then
+		notify-send -a idle "Idle management failed" "$1"
+	fi
+	printf '%s: %s\n' "${0##*/}" "$1" >&2
+	exit 1
+}
+
+# alive: a daemon is running (the pid in the pidfile still exists)
+alive() {
+	[ -r "$pidfile" ] || return 1
+	read -r pid < "$pidfile" || return 1
+	case "$pid" in '' | *[!0-9]*) return 1 ;; esac
+	kill -0 "$pid" 2>/dev/null
+}
 
 screen() {  # --off | --on
 	wlopm "$1" '*'
@@ -67,16 +84,25 @@ apply() {  # $1 = state
 	pid=$!
 }
 
+for t in setsid swayidle wlopm pgrep flock systemctl; do
+	command -v "$t" >/dev/null 2>&1 || die "missing $t"
+done
+
 case "${1:-}" in
 screen) screen "${2:?screen needs --off or --on}"; exit 0 ;;
-refresh)  # wake the daemon; it owns swayidle, so nothing races
-	{ read -r d < "$pidfile" && kill -USR1 "$d"; } 2>/dev/null || true
-	exit 0 ;;
+refresh)  # wake the daemon; start one if it is gone (crash, old session)
+	if alive; then
+		kill -USR1 "$pid" 2>/dev/null || true
+	else
+		setsid "$0" </dev/null >/dev/null 2>&1 &
+	fi
+	exit 0
+	;;
 esac
 
 # single instance: a second daemon would fight over swayidle
 exec 7>"$run/idle.lock"
-flock -n 7 || exit 0
+flock -w 2 7 || exit 0
 pkill -x swayidle 2>/dev/null || true   # clear strays from older versions
 
 pid=''
@@ -96,7 +122,7 @@ while :; do
 		cur=$now
 		apply "$now"
 	fi
-	sleep "$POLL" & nap=$!
+	sleep "$POLL" 7>&- & nap=$!
 	wait "$nap" || true          # interrupted early by USR1
 	kill "$nap" 2>/dev/null || true
 done

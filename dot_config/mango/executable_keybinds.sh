@@ -3,7 +3,18 @@
 # Usage: keybinds.sh [--list]   (--list prints plain text instead of opening fuzzel)
 # The comment line directly above a bind is shown as its description; a bind
 # without one falls back to its raw action name.
+set -u
+
 conf="${XDG_CONFIG_HOME:-$HOME/.config}/mango/config.conf"
+
+die() {
+	command -v notify-send >/dev/null 2>&1 &&
+		notify-send -a keybinds "Keybinds failed" "$1"
+	exit 1
+}
+
+command -v awk >/dev/null 2>&1 || die "awk is not installed"
+[ -r "$conf" ] || die "$conf not found"
 
 list() {
 	awk '
@@ -31,9 +42,10 @@ list() {
 	' "$conf"
 }
 
-if [ "$1" = "--list" ]; then
+if [ "${1:-}" = "--list" ]; then
 	list
 else
+	command -v fuzzel >/dev/null 2>&1 || die "fuzzel is not installed"
 	out="$(list)"
 	width="$(printf '%s\n' "$out" | awk '{ if (length > m) m = length } END { print (m ? m + 2 : 60) }')"
 	printf '%s\n' "$out" | fuzzel --dmenu --lines 25 --width "$width" --prompt "keybinds> "

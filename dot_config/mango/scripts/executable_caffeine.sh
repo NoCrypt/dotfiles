@@ -15,7 +15,17 @@ show)
 	;;
 toggle)
 	if [ -e "$flag" ]; then rm -f "$flag"; else : >"$flag"; fi
-	"${0%/*}/idle.sh" refresh >/dev/null 2>&1 || true
+	# refresh also restarts the idle daemon if it died, so turning caffeine
+	# off always brings idle management back (crash, killed daemon, new session)
+	case "$0" in
+	*/*) dir=${0%/*} ;;
+	*) dir=. ;;
+	esac
+	if [ -x "$dir/idle.sh" ]; then
+		"$dir/idle.sh" refresh >/dev/null 2>&1 || true
+	elif command -v notify-send >/dev/null 2>&1; then
+		notify-send -a caffeine "Caffeine" "idle.sh not found; idle management not restored"
+	fi
 	pkill -RTMIN+9 -x mangobar 2>/dev/null || true
 	;;
 *)
