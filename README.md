@@ -3,12 +3,27 @@
 Managed with chezmoi source naming.
 
 - `dot_config/` — maps to `~/.config/` (`dot_` = leading dot). `private_` = private file mode, `executable_` = executable bit.
-- `etc/`, `usr/`, `boot/` — system files that live outside `$HOME`; copy them with `sudo`, e.g.
-  `sudo cp etc/sddm.conf.d/*.conf /etc/sddm.conf.d/`,
-  `sudo cp -r usr/share/sddm/themes/orbital/* /usr/share/sddm/themes/orbital/` and
-  `sudo cp -r boot/grub/themes/ncpt /boot/grub/themes/` (then `sudo grub-mkconfig -o /boot/grub/grub.cfg`).
-  Recorded here for reference/restore, not applied by chezmoi (see `.chezmoiignore`).
-- `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer) and `pkglist` (the packages it installs).
+- `etc/`, `usr/`, `boot/` — reference copies of system files that live outside `$HOME`, kept in
+  sync with `scripts/sync-system.sh` (see [System files](#system-files)); not applied by chezmoi
+  (see `.chezmoiignore`).
+- `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer), `pkglist` (the packages it installs) and `sync-system.sh` (system file sync).
+
+## System files
+
+`etc/`, `usr/` and `boot/` are reference copies of files outside `$HOME`. Keep them in sync with:
+
+```sh
+scripts/sync-system.sh status   # diff repo vs system, read-only
+scripts/sync-system.sh pull     # copy system -> repo
+scripts/sync-system.sh push     # copy repo -> system (sudo)
+```
+
+All three accept `--dry-run`. `push` backs up every file it overwrites to
+`/var/backups/dotfiles-sync/<timestamp>/` and reruns `grub-mkconfig` (GRUB files) or
+`mkinitcpio -P` (`mkinitcpio.conf`) when needed.
+
+`etc/fstab` is included in `status`/`pull` but never pushed: a stale fstab can make the machine
+unbootable.
 
 ## Preview
 
