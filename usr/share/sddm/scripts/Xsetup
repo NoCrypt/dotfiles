@@ -21,9 +21,6 @@ if [ -n "$ext" ] && xrandr --output "$ext" --auto 2>/dev/null; then
     # External present: dark the laptop panel, external becomes the only screen.
     xrandr --output eDP-1 --off 2>/dev/null
     xrandr --output "$ext" --pos 0x0 --primary 2>/dev/null
-    # --auto picks the EDID preferred mode (2560x1440@144 on the H24G30Q);
-    # ask for 165Hz explicitly and keep the auto mode if the rate is absent.
-    xrandr --output "$ext" --mode 2560x1440 --rate 165 2>/dev/null
 else
     # No external (or it failed to light): use the laptop panel.
     xrandr --output eDP-1 --auto --pos 0x0 --primary 2>/dev/null
