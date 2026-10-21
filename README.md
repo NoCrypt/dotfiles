@@ -76,6 +76,7 @@ reference-only — do not overwrite the live file blindly.
 | `etc/systemd/zram-generator.conf.d/` | zram0 (zstd, 50% RAM; needs `zram-generator`) |
 | `etc/xdg/reflector/` | reflector mirrorlist config (freedif excluded; reason not recorded — see the file) |
 | `etc/pacman.conf` | repos incl. chaotic-aur (needs `chaotic-keyring` + `chaotic-mirrorlist`, key signed first) |
+| `etc/polkit-1/rules.d/` | passwordless polkit allowlist for local active `ncpt`: disks, NetworkManager, power menu, power profiles; `pkexec`/systemd still prompt |
 | `usr/share/sddm/scripts/Xsetup` | reverse-PRIME: power on; dark the laptop panel when docked |
 | `etc/alsa-card-profile/`, `etc/udev/rules.d/91-pipewire-alsa-port-split.rules`, `etc/modprobe.d/alsa-base.conf`, `usr/lib/firmware/hda-jack-retask.fw` | split the ALC256 speakers and headphone jack into two independent PipeWire sinks (ALSA `indep_hp=yes` + custom ACP profile set) |
 | `usr/share/sddm/themes/orbital/` | orbital SDDM theme (stock black background, `themeMode=dark`) |
