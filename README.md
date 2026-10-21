@@ -35,6 +35,7 @@ sudo systemctl enable --now scx.service reflector.timer
 ```
 
 - `scx.service` — sched_ext `scx_bpfland`; the unit is in `etc/systemd/system/`.
+- `cpu-no-boost.service` — writes 0 to `/sys/devices/system/cpu/cpufreq/boost` at boot (sysfs resets it to 1 on reboot).
 - `reflector.timer` — refreshes the mirrorlist using the config in `/etc/xdg/reflector/` (shipped as `etc/xdg/reflector/reflector.conf`).
 - `zram-generator` — reads `/etc/systemd/zram-generator.conf.d/` at boot; there is no unit to enable.
 
