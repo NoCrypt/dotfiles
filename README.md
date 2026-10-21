@@ -79,6 +79,7 @@ unbootable.
 | `dot_config/fastfetch/` | fastfetch config + logo image (`miku.png`) |
 | `dot_config/private_fish/` | fish shell (ctrl-h / ctrl-arrow / ctrl-backspace word binds) |
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, `ponytail` plugin, vendored `openrouter-credit` plugin (not loaded) |
+| `dot_config/quickshell/` | Quickshell shell — bar, notifications, launcher, lock, session menu; `Hypr.qml` is the compositor adapter (currently Hyprland-targeted; see `portable-desktop-setup.md`) |
 | `etc/sddm.conf.d/` | SDDM: orbital theme, X11 greeter, cursor theme |
 | `etc/fstab` | btrfs subvols (`@`,`@home`,`@var`), ext4 `/boot`, vfat ESP; no snapshots configured |
 | `boot/grub/themes/minimal/` | GRUB theme — minimal Terminus text on black (`tomdewildt/minimal-grub-theme`) |
