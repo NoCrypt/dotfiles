@@ -3,10 +3,8 @@
 Managed with chezmoi source naming.
 
 - `dot_config/` — maps to `~/.config/` (`dot_` = leading dot). `private_` = private file mode, `executable_` = executable bit.
-- `etc/`, `usr/`, `boot/` — reference copies of system files that live outside `$HOME`, kept in
-  sync with `scripts/sync-system.sh` (see [System files](#system-files)); not applied by chezmoi
-  (see `.chezmoiignore`).
-- `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer), `pkglist` (the packages it installs) and `sync-system.sh` (system file sync).
+- `etc/`, `usr/`, `boot/` — reference copies of system files that live outside `$HOME`; not applied by chezmoi (see `.chezmoiignore`). Copy them manually if needed.
+- `scripts/` — machine setup kept in the repo only, not applied by chezmoi: `post-install.sh` (the lean Arch installer; intentionally frozen) and `pkglist` (the packages it installs).
 
 ## Bootstrap
 
@@ -17,15 +15,14 @@ chezmoi init NoCrypt/dotfiles        # clone only, into ~/.local/share/chezmoi
 cd ~/.local/share/chezmoi
 
 sudo TARGET_USER="$USER" scripts/post-install.sh   # packages + system config
-scripts/sync-system.sh push                        # repo -> /etc, /usr, /boot
 chezmoi apply                                      # dotfiles over the defaults
 ```
 
 The installer enables `NetworkManager`, `bluetooth`, `power-profiles-daemon`, `rtkit-daemon` and
 `sddm` (default; `DISPLAY_MANAGER=none` skips it), plus `asusd` and the NVIDIA suspend/resume
-units on matching hardware. Before the first `pacman -S` after `push`: `etc/pacman.conf` enables
-`[chaotic-aur]`, so install `chaotic-keyring` and `chaotic-mirrorlist` and sign the key first, or
-pacman fails on the missing include.
+units on matching hardware. Before the first `pacman -S` with the repo's `etc/pacman.conf`:
+`[chaotic-aur]` requires `chaotic-keyring` and `chaotic-mirrorlist`, and the key must be signed
+first, or pacman fails on the missing include.
 
 It leaves the rest of the repo's runtime setup to you:
 
@@ -39,24 +36,14 @@ sudo systemctl enable --now scx.service reflector.timer
 - `reflector.timer` — refreshes the mirrorlist using the config in `/etc/xdg/reflector/` (shipped as `etc/xdg/reflector/reflector.conf`).
 - `zram-generator` — reads `/etc/systemd/zram-generator.conf.d/` at boot; there is no unit to enable.
 
-`etc/fstab` is pull-only: `push` skips it, since a stale fstab can make the machine unbootable.
+`etc/fstab` is a reference copy only. Never copy it blindly over the live file; a stale fstab can
+make the machine unbootable.
 
 ## System files
 
-`etc/`, `usr/` and `boot/` are reference copies of files outside `$HOME`. Keep them in sync with:
-
-```sh
-scripts/sync-system.sh status   # diff repo vs system, read-only
-scripts/sync-system.sh pull     # copy system -> repo
-scripts/sync-system.sh push     # copy repo -> system (sudo)
-```
-
-All three accept `--dry-run`. `push` backs up every file it overwrites to
-`/var/backups/dotfiles-sync/<timestamp>/` and reruns `grub-mkconfig` (GRUB files) or
-`mkinitcpio -P` (`mkinitcpio.conf`) when needed.
-
-`etc/fstab` is included in `status`/`pull` but never pushed: a stale fstab can make the machine
-unbootable.
+`etc/`, `usr/` and `boot/` are reference copies of files outside `$HOME`. They are not applied by
+chezmoi and there is no sync helper; copy individual files with sudo when needed. `etc/fstab` is
+reference-only — do not overwrite the live file blindly.
 
 ## Preview
 
