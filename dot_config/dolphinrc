@@ -10,7 +10,9 @@ ShowFullPath=true
 ShowSpaceInfo=true
 ShowStatusBar=true
 SortRole=name
+Version=202
 ViewMode=Details
+ViewPropsTimestamp=2026,10,20,6,6,2.584
 
 [IconsMode]
 PreviewSize=208

@@ -64,7 +64,7 @@
         //"format": "󰈀 {ifname}",
         //"format-alt": "↓{down} ↑{up}"
 	"format": " ",
-	"format-wifi": "{icon} {signal} {ssid}",
+	"format-wifi": "{signal}",
 	"format-alt": "↓{down} ↑{up}",
 	"format-ethernet": "󰈀 ",
 	"format-disconnected": " ",
@@ -93,8 +93,8 @@
         "icons": ["󰕿", "󰖀", "󰕾"],
         // "icon-bluetooth": "󰂯",
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-",
         "on-click-right": "pwvucontrol"
     },
     "battery": {
