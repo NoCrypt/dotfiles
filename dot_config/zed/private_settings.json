@@ -7,11 +7,26 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "format_on_save": "modifications",
+  "languages": {
+    "Rust": {
+      "prettier": {
+        "allowed": true
+      }
+    }
+  },
+  "middle_click_paste": false,
+  "minimap": {
+    "show": "auto"
+  },
+  "buffer_line_height": "comfortable",
+  "icon_theme": "Colored Zed Icons Theme Dark",
   "markdown_preview": {
+    "open_markdown_files_in_preview": false,
     "max_width": 1200.0,
     "limit_content_width": true,
     "heading_font_weight": 700.0,
-    "font_family": "Google Sans Flex"
+    "font_family": "Google Sans Flex Static"
   },
   "cli_default_open_behavior": "existing_window",
   "tab_size": 4,
@@ -48,7 +63,7 @@
   "agent_ui_font_size": 18.0,
   "agent_buffer_font_size": 16.0,
   "ui_font_weight": 400.0,
-  "ui_font_family": "Google Sans Flex",
+  "ui_font_family": "Google Sans Flex Static",
   "terminal": {
     "font_size": 18.0
   },
@@ -64,10 +79,38 @@
   },
   "base_keymap": "VSCode",
   "ui_font_size": 18.0,
-  "buffer_font_size": 18.0,
+  "buffer_font_size": 15.0,
   "theme": {
     "mode": "dark",
     "light": "Ayu Light",
     "dark": "GitHub Dark Transparent",
   },
+  "lsp": {
+      "rust-analyzer": {
+        "initialization_options": {
+          // 1. Prevent heavy background spikes on project startup
+          "cachePriming": {
+            "enable": false
+          },
+          // 2. Reduce real-time Cargo check lag (runs check only on manual save)
+          "checkOnSave": true,
+          // 3. Skip heavy clippy/check documentation indexing if unnecessary
+          "hover": {
+            "documentation": {
+              "enable": true
+            }
+          },
+          // 4. Opt-out of proc-macro expansion if your macros are heavily bottlenecking
+          "procMacro": {
+            "enable": true
+          },
+          // 5. Restrict diagnostic calculations to the current active file
+          "diagnostics": {
+            "experimental": {
+              "enable": false
+            }
+          }
+        }
+      }
+    }
 }
