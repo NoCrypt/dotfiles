@@ -63,7 +63,7 @@ reference-only — do not overwrite the live file blindly.
 | `dot_config/swaylock/` | lock screen — swaylock-effects: blurred screenshot + GitHub Dark clock ring |
 | `dot_config/fuzzel/` | launcher (GitHub Dark) |
 | `dot_config/fontconfig/` | monospace → JetBrainsMono Nerd Font; sans-serif/sans → Google Sans Flex |
-| `dot_local/share/fonts/GoogleSansFlex/` | Google Sans Flex variable font (UI text) + OFL license |
+| `dot_local/share/fonts/GoogleSansFlex/` | Google Sans Flex variable font (`Google Sans Flex VF`) + 100–900 static instances in `static/` + OFL license |
 | `dot_config/fastfetch/` | fastfetch config + logo image (`miku.png`) |
 | `dot_config/private_fish/` | fish shell (ctrl-h / ctrl-arrow / ctrl-backspace word binds) |
 | `dot_config/opencode/` | OpenCode CLI: github-transparent theme, `ponytail` plugin, vendored `openrouter-credit` plugin (not loaded) |
