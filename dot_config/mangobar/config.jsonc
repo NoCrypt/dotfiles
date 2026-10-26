@@ -131,7 +131,9 @@
 
     "custom/applist": {
 	"format": "󰀻",
-	"on-click": "fuzzel"
+	"on-click": "fuzzel",
+	// right click: launch the picked app on the NVIDIA GPU
+	"on-click-right": "fuzzel --launch-prefix=prime-run"
     },
 
     "custom/caffeine": {
