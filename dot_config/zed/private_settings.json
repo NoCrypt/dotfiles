@@ -7,6 +7,51 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "markdown_preview": {
+    "max_width": 1200.0,
+    "limit_content_width": true,
+    "heading_font_weight": 700.0,
+    "font_family": "Google Sans Flex"
+  },
+  "cli_default_open_behavior": "existing_window",
+  "tab_size": 4,
+  "collaboration_panel": {
+    "button": false
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent": {
+    "thinking_display": "preview",
+    "threads_sidebar": {
+      "position": "right"
+    },
+    "dock": "right",
+    "favorite_models": [],
+    "model_parameters": []
+  },
+  "project_panel": {
+    "dock": "left"
+  },
+  "edit_predictions": {
+    "allow_data_collection": "no",
+    "provider": "none"
+  },
+  "agent_servers": {
+    "opencode-v2": {
+      "default_config_options": {
+        "model": "deepseek/deepseek-flash"
+      },
+      "type": "registry"
+    }
+  },
+  "agent_ui_font_size": 18.0,
+  "agent_buffer_font_size": 16.0,
+  "ui_font_weight": 400.0,
+  "ui_font_family": "Google Sans Flex",
+  "terminal": {
+    "font_size": 18.0
+  },
   "mouse_wheel_zoom": true,
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "session": {
@@ -19,7 +64,7 @@
   },
   "base_keymap": "VSCode",
   "ui_font_size": 18.0,
-  "buffer_font_size": 15,
+  "buffer_font_size": 18.0,
   "theme": {
     "mode": "dark",
     "light": "Ayu Light",
