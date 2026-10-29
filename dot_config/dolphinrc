@@ -1,6 +1,10 @@
 [DetailsMode]
 PreviewSize=32
 
+[ExtractDialog]
+2 screens: Height=721
+2 screens: Width=1263
+
 [General]
 ConfirmDelete=true
 GlobalViewProps=true
